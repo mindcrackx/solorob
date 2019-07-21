@@ -1,31 +1,16 @@
 <?php
-function sql_komponente_anlegen(
+function sql_komponentenart_anlegen(
     $mysqli,
-    $bezeichnung,
-    $raeume_r_id,
-    $lieferant_l_id,
-    $einkaufsdatum,
-    $gewaehrleistungsdauer,
-    $notiz,
-    $hersteller,
-    $komponentenarten_ka_id
+    $komponentenart
 )
 {
-    $sql = "insert into tbl_komponenten(k_bezeichnung, raeume_r_id, lieferant_l_id, k_einkaufsdatum, k_gewaehrleistungsdauer, k_notiz, k_hersteller, komponentenarten_ka_id)
-    values (?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "insert into tbl_komponentenarten(ka_komponentenart) values (?)";
     if (!($stmt = $mysqli->prepare($sql))) {
         echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
     }
     if (!$stmt->bind_param(
-        "siisissi",
-        $bezeichnung,
-        $raeume_r_id,
-        $lieferant_l_id,
-        $einkaufsdatum,
-        $gewaehrleistungsdauer,
-        $notiz,
-        $hersteller,
-        $komponentenarten_ka_id
+        "s",
+        $komponentenart
     )) {
         echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
     }
@@ -36,13 +21,13 @@ function sql_komponente_anlegen(
     return $stmt->get_result();
 }
 
-function sql_komponente_list(
+function sql_komponentenart_list(
     $mysqli,
     $startNum,
     $howMany
 )
 {
-    $sql = "select * from tbl_komponenten limit ?, ?";
+    $sql = "select * from tbl_komponentenarten limit ?, ?";
     if (!($stmt = $mysqli->prepare($sql))) {
         echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
     }
@@ -61,18 +46,18 @@ function sql_komponente_list(
     return $stmt->get_result();
 }
 
-function sql_komponente_delete(
+function sql_komponentenart_delete(
     $mysqli,
-    $k_id
+    $ka_id
 )
 {
-    $sql = "delete from tbl_komponenten where k_id = ?";
+    $sql = "delete from tbl_komponentenarten where ka_id = ?";
     if (!($stmt = $mysqli->prepare($sql))) {
         echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
     }
     if (!$stmt->bind_param(
         "i",
-        $k_id
+        $ka_id
     )) {
         echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
     }
@@ -84,34 +69,20 @@ function sql_komponente_delete(
     return $stmt->get_result();
 }
 
-function sql_komponente_update(
+function sql_komponentenart_update(
     $mysqli,
-    $k_id,
-    $bezeichnung,
-    $raeume_r_id,
-    $lieferant_l_id,
-    $einkaufsdatum,
-    $gewaehrleistungsdauer,
-    $notiz,
-    $hersteller,
-    $komponentenarten_ka_id
+    $ka_id,
+    $komponentenart
 )
 {
-    $sql = "update tbl_komponenten set k_bezeichnung = ?, raeume_r_id = ?, lieferant_l_id = ?, k_einkaufsdatum = ?, k_gewaehrleistungsdauer = ?, k_notiz = ?, k_hersteller = ?, komponentenarten_ka_id = ? where k_id = ?";
+    $sql = "update tbl_komponentenarten set ka_komponentenart = ? where ka_id = ?";
     if (!($stmt = $mysqli->prepare($sql))) {
         echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
     }
     if (!$stmt->bind_param(
-        "siisissii",
-        $bezeichnung,
-        $raeume_r_id,
-        $lieferant_l_id,
-        $einkaufsdatum,
-        $gewaehrleistungsdauer,
-        $notiz,
-        $hersteller,
-        $komponentenarten_ka_id,
-        $k_id
+        "si",
+        $komponentenart,
+        $ka_id
     )) {
         echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
     }
@@ -122,3 +93,4 @@ function sql_komponente_update(
     return $stmt->get_result();
 }
 ?>
+

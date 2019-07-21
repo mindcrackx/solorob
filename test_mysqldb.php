@@ -85,6 +85,43 @@ $res = sql_benutzer_list($mysqli, 0, 10);
 $res = sql_result_to_array($res);
 print_result_array($res);
 
+
+# test komponentenart
+echo "<br/><br/> Test komponentenart <br/>";
+sql_komponentenart_anlegen($mysqli, "komponentenart nr1");
+sql_komponentenart_anlegen($mysqli, "komponentenart nr2");
+
+$res = sql_komponentenart_list($mysqli, 0, 10);
+$res= sql_result_to_array($res);
+print_result_array($res);
+
+sql_komponentenart_delete($mysqli, 1);
+
+sql_komponentenart_update($mysqli, 2, "updated komponentenart");
+
+echo "<br/>";
+$res = sql_komponentenart_list($mysqli, 0, 10);
+$res = sql_result_to_array($res);
+print_result_array($res);
+
+
+# test komponente
+echo "<br/><br/> Test komponente <br/>";
+sql_komponente_anlegen($mysqli, "komp bezeichn 1", 2, 2, date("Y-m-d"), 365, "super notiz", "hersteller 1", 2);
+sql_komponente_anlegen($mysqli, "komp bezeichn 2", 2, 2, date("Y-m-d"), 365, "super notiz", "hersteller 1", 2);
+
+$res = sql_komponente_list($mysqli, 0, 10);
+$res= sql_result_to_array($res);
+print_result_array($res);
+
+sql_komponente_delete($mysqli, 1);
+
+sql_komponente_update($mysqli, 2, "update bezeichn 2", 2, 2, date("Y-m-d"), 365, "super notiz", "hersteller 1", 2);
+
+echo "<br/>";
+$res = sql_komponente_list($mysqli, 0, 10);
+$res = sql_result_to_array($res);
+print_result_array($res);
 ?>
     
 </body>

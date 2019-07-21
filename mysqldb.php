@@ -8,5 +8,7 @@ echo $mysqli->host_info . "\n";
 require_once("solorob_db_helpers/raeume.php");
 require_once("solorob_db_helpers/lieferant.php");
 require_once("solorob_db_helpers/benutzer.php");
+require_once("solorob_db_helpers/komponentenart.php");
+require_once("solorob_db_helpers/komponente.php");
 ?>
 
