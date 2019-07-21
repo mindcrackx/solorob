@@ -40,9 +40,9 @@ $res = sql_raeume_list($mysqli, 0, 10);
 $res= sql_result_to_array($res);
 print_result_array($res);
 
-sql_raeume_delete($mysqli, 1);
+sql_raeume_delete($mysqli, 2);
 
-sql_raeume_update($mysqli, 2, "002", "raum 2", "dies ist ein geaenderter testraum");
+sql_raeume_update($mysqli, 3, "002", "raum 2", "dies ist ein geaenderter testraum");
 
 echo "<br/>";
 $res = sql_raeume_list($mysqli, 0, 10);
@@ -107,8 +107,8 @@ print_result_array($res);
 
 # test komponente
 echo "<br/><br/> Test komponente <br/>";
-sql_komponente_anlegen($mysqli, "komp bezeichn 1", 2, 2, date("Y-m-d"), 365, "super notiz", "hersteller 1", 2);
-sql_komponente_anlegen($mysqli, "komp bezeichn 2", 2, 2, date("Y-m-d"), 365, "super notiz", "hersteller 1", 2);
+sql_komponente_anlegen($mysqli, "komp bezeichn 1", 3, 2, date("Y-m-d"), 365, "super notiz", "hersteller 1", 2);
+sql_komponente_anlegen($mysqli, "komp bezeichn 2", 3, 2, date("Y-m-d"), 365, "super notiz", "hersteller 1", 2);
 
 $res = sql_komponente_list($mysqli, 0, 10);
 $res= sql_result_to_array($res);
@@ -116,7 +116,7 @@ print_result_array($res);
 
 sql_komponente_delete($mysqli, 1);
 
-sql_komponente_update($mysqli, 2, "update bezeichn 2", 2, 2, date("Y-m-d"), 365, "super notiz", "hersteller 1", 2);
+sql_komponente_update($mysqli, 2, "update bezeichn 2", 3, 2, date("Y-m-d"), 365, "super notiz", "hersteller 1", 2);
 
 echo "<br/>";
 $res = sql_komponente_list($mysqli, 0, 10);

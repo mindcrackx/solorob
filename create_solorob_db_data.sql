@@ -36,3 +36,8 @@ VALUES
     (3, 5),
     -- Verwaltung
     (4, 5);
+
+INSERT INTO tbl_raeume
+    (r_nr, r_bezeichnung, r_notiz)
+VALUES
+    ('000', 'Ausmusterung', 'Hierhin werden ausgemusterte Komponenten verschoben.');
