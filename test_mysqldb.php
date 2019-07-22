@@ -105,10 +105,29 @@ $res = sql_result_to_array($res);
 print_result_array($res);
 
 
+# test komponentenattribut
+echo "<br/><br/> Test komponentenattribut <br/>";
+sql_komponentenattribut_anlegen($mysqli, "komp attr nr1");
+sql_komponentenattribut_anlegen($mysqli, "komp attr nr2");
+
+$res = sql_komponentenattribut_list($mysqli, 0, 10);
+$res= sql_result_to_array($res);
+print_result_array($res);
+
+sql_komponentenattribut_delete($mysqli, 1);
+
+sql_komponentenattribut_update($mysqli, 2, "updated komp attr");
+
+echo "<br/>";
+$res = sql_komponentenattribut_list($mysqli, 0, 10);
+$res = sql_result_to_array($res);
+print_result_array($res);
+
+
 # test komponente
 echo "<br/><br/> Test komponente <br/>";
-sql_komponente_anlegen($mysqli, "komp bezeichn 1", 3, 2, date("Y-m-d"), 365, "super notiz", "hersteller 1", 2);
-sql_komponente_anlegen($mysqli, "komp bezeichn 2", 3, 2, date("Y-m-d"), 365, "super notiz", "hersteller 1", 2);
+sql_komponente_anlegen($mysqli, "komp bezeichn 1", 4, 2, date("Y-m-d"), 365, "super notiz", "hersteller 1", 2);
+sql_komponente_anlegen($mysqli, "komp bezeichn 2", 4, 2, date("Y-m-d"), 365, "super notiz", "hersteller 1", 2);
 
 $res = sql_komponente_list($mysqli, 0, 10);
 $res= sql_result_to_array($res);
@@ -116,7 +135,7 @@ print_result_array($res);
 
 sql_komponente_delete($mysqli, 1);
 
-sql_komponente_update($mysqli, 2, "update bezeichn 2", 3, 2, date("Y-m-d"), 365, "super notiz", "hersteller 1", 2);
+sql_komponente_update($mysqli, 2, "update bezeichn 2", 4, 2, date("Y-m-d"), 365, "super notiz", "hersteller 1", 2);
 
 echo "<br/>";
 $res = sql_komponente_list($mysqli, 0, 10);

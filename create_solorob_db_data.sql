@@ -40,4 +40,5 @@ VALUES
 INSERT INTO tbl_raeume
     (r_nr, r_bezeichnung, r_notiz)
 VALUES
-    ('000', 'Ausmusterung', 'Hierhin werden ausgemusterte Komponenten verschoben.');
+    ('000', 'Ausmusterung', 'Hierhin werden ausgemusterte Komponenten verschoben.')
+    ('000', 'Lager', 'Hier befinden sich alle Komponenten die momentan keinem anderen Raum zugeordnet sind.');
