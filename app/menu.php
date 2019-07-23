@@ -171,20 +171,33 @@
         <img src="../static/solorob_logo.png" width="200px" hspace="50px">
         <br><br><br>
         <a href="./Startseite.html" target="mainframe">Startseite</a>
-        <a href="./Neubeschaffung.php" target="mainframe">Neubeschaffung</a>
-        <button class="dropdown-btn">Stammdatenverwaltung
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-            <a href="./Lieferanten.php" target="mainframe">• Lieferanten</a>
-            <a href="./Raeume.php" target="mainframe">• Räume</a>
-            <a href="./Benutzer.php" target="mainframe">• Benutzer</a>
-            <a href="./Komponentenarten.php" target="mainframe">• Komponentenarten</a>
-            <a href="./Komponentenattribute.php" target="mainframe">• Komponentenattribute</a>
-        </div>
-        <a href="./Ausmusterung.php" target="mainframe">Ausmusterung</a>
-        <a href="./Wartung.php" target="mainframe">Wartung</a>
-        <a href="./Reporting.php" target="mainframe">Reporting</a>
+
+        <?php
+        foreach ($_SESSION["funktionen"] as $funktion)
+        {
+            if ($funktion === "Neubeschaffung")
+                echo('<a href="./Neubeschaffung.php" target="mainframe">Neubeschaffung</a>');
+            elseif ($funktion === "Stammdatenverwaltung")
+            {
+                echo('<button class="dropdown-btn">Stammdatenverwaltung');
+                echo('<i class="fa fa-caret-down"></i>');
+                echo('</button>');
+                echo('<div class="dropdown-container">');
+                echo('<a href="./Lieferanten.php" target="mainframe">• Lieferanten</a>');
+                echo('<a href="./Raeume.php" target="mainframe">• Räume</a>');
+                echo('<a href="./Benutzer.php" target="mainframe">• Benutzer</a>');
+                echo('<a href="./Komponentenarten.php" target="mainframe">• Komponentenarten</a>');
+                echo('<a href="./Komponentenattribute.php" target="mainframe">• Komponentenattribute</a>');
+                echo('</div>');
+            }
+            elseif ($funktion === "Ausmusterung")
+                echo('<a href="./Ausmusterung.php" target="mainframe">Ausmusterung</a>');
+            elseif ($funktion === "Wartung")
+                echo('<a href="./Wartung.php" target="mainframe">Wartung</a>');
+            elseif ($funktion === "Reporting")
+                echo('<a href="./Reporting.php" target="mainframe">Reporting</a>');
+        }
+        ?>
     </div>
 
     <div class="sidenavbut">

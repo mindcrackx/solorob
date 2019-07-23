@@ -156,7 +156,8 @@ function sql_benutzer_get_rechte_funktionen(
     $sql = "select f.rf_name from tbl_rechte_zuordnung as z
 	inner join tbl_benutzer as b on b.b_rechte_rolle_id = z.rz_rolle_id
     inner join tbl_rechte_funktion as f on f.rf_id = z.rz_funktion_id
-    where b.b_nickname = ?";
+    where b.b_nickname = ?
+    order by f.rf_id";
     if (!($stmt = $mysqli->prepare($sql))) {
         echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
     }

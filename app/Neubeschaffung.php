@@ -1,7 +1,7 @@
 <?php
 session_start();
-if ((! (isset($_SESSION["loggedin"]))) || (! $_SESSION["loggedin"]))
-    die("not logged in");
+require_once("../helpers/validate_access.php");
+validate_access("Neubeschaffung");
 ?>
 
 <!DOCTYPE html>

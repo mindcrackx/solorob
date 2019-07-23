@@ -1,3 +1,9 @@
+<?php
+session_start();
+require_once("../helpers/validate_access.php");
+validate_access("Stammdatenverwaltung");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

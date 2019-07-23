@@ -1,3 +1,8 @@
+<?php
+session_start();
+require_once("../helpers/validate_access.php");
+validate_access("Ausmusterung");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
