@@ -171,19 +171,19 @@
         <img src="./solorob_logo.png" width="200px" hspace="50px">
         <br><br><br>
         <a href="../solorob/Startseite.html" target="mainframe" onclick=fnselect()>Startseite</a>
-        <a href="./Neubeschaffung.html" target="mainframe">Neubeschaffung</a>
+        <a href="./Neubeschaffung.php" target="mainframe">Neubeschaffung</a>
         <button class="dropdown-btn">Stammdatenverwaltung
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            <a href="./Lieferanten.html" target="mainframe">• Lieferanten</a>
+            <a href="./Lieferanten.php" target="mainframe">• Lieferanten</a>
             <a href="./Raeume.php" target="mainframe">• Räume</a>
             <a href="./Benutzer.php" target="mainframe">• Benutzer</a>
             <a href="./Komponentenarten.html" target="mainframe">• Komponentenarten</a>
             <a href="./Komponentenattribute.html" target="mainframe">• Komponentenattribute</a>
         </div>
-        <a href="./Ausmusterung.html" target="mainframe">Ausmusterung</a>
-        <a href="./Wartung.html" target="mainframe">Wartung</a>
+        <a href="./Ausmusterung.php" target="mainframe">Ausmusterung</a>
+        <a href="./Wartung.php" target="mainframe">Wartung</a>
         <a href="./Reporting.html" target="mainframe">Reporting</a>
     </div>
 

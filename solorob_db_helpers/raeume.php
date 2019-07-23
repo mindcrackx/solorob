@@ -51,6 +51,22 @@ function sql_raeume_list(
     return $stmt->get_result();
 }
 
+
+function sql_raeume_list_all(
+    $mysqli
+)
+{
+    $sql = "select * from tbl_raeume";
+    if (!($stmt = $mysqli->prepare($sql))) {
+        echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+    }
+    if (!$stmt->execute()) {
+        echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+    }
+    #result = $stmt->fetch_all(MYSQLI_ASSOC);
+    return $stmt->get_result();
+}
+
 function sql_raeume_delete(
     $mysqli,
     $r_id

@@ -92,5 +92,19 @@ function sql_komponentenart_update(
     }
     return $stmt->get_result();
 }
+
+function sql_komponentenart_list_all(
+    $mysqli
+)
+{
+    $sql = "select * from tbl_komponentenarten";
+    if (!($stmt = $mysqli->prepare($sql))) {
+        echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+    }
+    if (!$stmt->execute()) {
+        echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+    }
+    return $stmt->get_result();
+}
 ?>
 
