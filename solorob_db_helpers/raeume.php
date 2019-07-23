@@ -101,4 +101,27 @@ function sql_raeume_update(
     }
     return $stmt->get_result();
 }
+
+
+function sql_raeume_list_one(
+    $mysqli,
+    $r_id
+)
+{
+    $sql = "select * from tbl_raeume where r_id = ?";
+    if (!($stmt = $mysqli->prepare($sql))) {
+        echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+    }
+    if (!$stmt->bind_param(
+        "i",
+        $r_id
+    )) {
+        echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+    }
+    if (!$stmt->execute()) {
+        echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+    }
+    #result = $stmt->fetch_all(MYSQLI_ASSOC);
+    return $stmt->get_result();
+}
 ?>

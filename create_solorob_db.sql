@@ -11,8 +11,8 @@ USE solorob_db;
 CREATE TABLE tbl_lieferant
 (
     l_id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    l_firmenname VARCHAR(25),
-    l_strasse VARCHAR(25),
+    l_firmenname VARCHAR(45),
+    l_strasse VARCHAR(45),
     l_plz VARCHAR(5),
     l_ort VARCHAR(45),
     l_tel VARCHAR(20),
