@@ -83,18 +83,6 @@ CREATE TABLE tbl_komponentenattribute
     kat_bezeichnung VARCHAR(25)
 );
 
-CREATE TABLE tbl_komponente_hat_attribute
-(
-    kha_id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    komponenten_k_id INT(11) NOT NULL,
-    komponentenattribute_kat_id INT(11),
-    khkat_wert VARCHAR(45),
-
-    CONSTRAINT fk_komponente_hat_attribute__komponentenattribute
-    FOREIGN KEY (komponentenattribute_kat_id)
-    REFERENCES tbl_komponentenattribute(kat_id)
-);
-
 CREATE TABLE tbl_komponenten
 (
     k_id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -119,6 +107,23 @@ CREATE TABLE tbl_komponenten
     FOREIGN KEY (komponentenarten_ka_id)
     REFERENCES tbl_komponentenarten(ka_id)
 );
+
+CREATE TABLE tbl_komponente_hat_attribute
+(
+    kha_id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    komponenten_k_id INT(11) NOT NULL,
+    komponentenattribute_kat_id INT(11),
+    khkat_wert VARCHAR(45),
+
+    CONSTRAINT fk_komponente_hat_attribute__komponentenattribute
+    FOREIGN KEY (komponentenattribute_kat_id)
+    REFERENCES tbl_komponentenattribute(kat_id),
+
+    CONSTRAINT fk_komponente_hat_attribute__komponenten_k_id
+    FOREIGN KEY (komponenten_k_id)
+    REFERENCES tbl_komponenten(k_id)
+);
+
 
 CREATE TABLE tbl_wird_beschrieben_durch
 (

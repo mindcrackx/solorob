@@ -92,6 +92,29 @@ function sql_komponentenattribut_update(
     }
     return $stmt->get_result();
 }
+
+
+function sql_komponentenattribut_list_one(
+    $mysqli,
+    $kat_id
+)
+{
+    $sql = "select * from tbl_komponentenattribute where kat_id = ?";
+    if (!($stmt = $mysqli->prepare($sql))) {
+        echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+    }
+    if (!$stmt->bind_param(
+        "i",
+        $kat_id
+    )) {
+        echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+    }
+    if (!$stmt->execute()) {
+        echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+    }
+    #result = $stmt->fetch_all(MYSQLI_ASSOC);
+    return $stmt->get_result();
+}
 ?>
 
 
