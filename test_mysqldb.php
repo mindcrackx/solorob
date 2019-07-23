@@ -76,9 +76,9 @@ $res = sql_benutzer_list($mysqli, 0, 10);
 $res= sql_result_to_array($res);
 print_result_array($res);
 
-sql_benutzer_delete($mysqli, 1);
+sql_benutzer_delete($mysqli, 2);
 
-sql_benutzer_update($mysqli, 2, "updatename", "update vorname", "updateNick", "pwdhash", 2);
+sql_benutzer_update($mysqli, 3, "updatename", "update vorname", "updateNick", "pwdhash", 2);
 
 echo "<br/>";
 $res = sql_benutzer_list($mysqli, 0, 10);

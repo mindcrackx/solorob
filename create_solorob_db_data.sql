@@ -42,3 +42,8 @@ INSERT INTO tbl_raeume
 VALUES
     ('000', 'Ausmusterung', 'Hierhin werden ausgemusterte Komponenten verschoben.'),
     ('000', 'Lager', 'Hier befinden sich alle Komponenten die momentan keinem anderen Raum zugeordnet sind.');
+
+INSERT INTO tbl_benutzer
+    (b_name, b_vorname, b_nickname, b_password, b_rechte_rolle_id)
+VALUES
+    ('admin', 'admin', 'admin', '$2y$10$asYVvykhqIdLAwWZN72Dd.E2JQeviaf88uHr4DXEPyCTpS8hjWxeK', 1);
