@@ -10,7 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
     <title>solorob - IT-Verwaltung</title>
     <style>
         body {
@@ -168,9 +168,9 @@
 
 <body>
     <div class="sidenav">
-        <img src="./solorob_logo.png" width="200px" hspace="50px">
+        <img src="../static/solorob_logo.png" width="200px" hspace="50px">
         <br><br><br>
-        <a href="../solorob/Startseite.html" target="mainframe" onclick=fnselect()>Startseite</a>
+        <a href="./Startseite.html" target="mainframe">Startseite</a>
         <a href="./Neubeschaffung.php" target="mainframe">Neubeschaffung</a>
         <button class="dropdown-btn">Stammdatenverwaltung
             <i class="fa fa-caret-down"></i>
@@ -179,12 +179,12 @@
             <a href="./Lieferanten.php" target="mainframe">• Lieferanten</a>
             <a href="./Raeume.php" target="mainframe">• Räume</a>
             <a href="./Benutzer.php" target="mainframe">• Benutzer</a>
-            <a href="./Komponentenarten.html" target="mainframe">• Komponentenarten</a>
-            <a href="./Komponentenattribute.html" target="mainframe">• Komponentenattribute</a>
+            <a href="./Komponentenarten.php" target="mainframe">• Komponentenarten</a>
+            <a href="./Komponentenattribute.php" target="mainframe">• Komponentenattribute</a>
         </div>
         <a href="./Ausmusterung.php" target="mainframe">Ausmusterung</a>
         <a href="./Wartung.php" target="mainframe">Wartung</a>
-        <a href="./Reporting.html" target="mainframe">Reporting</a>
+        <a href="./Reporting.php" target="mainframe">Reporting</a>
     </div>
 
     <div class="sidenavbut">
