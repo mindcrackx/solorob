@@ -47,6 +47,10 @@
             background-color: blue;
             border-top: none;
         }
+
+        .main input {
+            width: 300px;
+        }
     </style>
 </head>
 
@@ -57,7 +61,7 @@
 
         if (! (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === TRUE))
         {
-            if (isset($_POST["submit"]))
+            if (isset($_POST["anmelden"]))
             {
                 $nickname = $_POST["nickname"];
                 $password = $_POST["password"];
@@ -73,16 +77,15 @@
         }
         else
             header("location: menu.php");
-
-?>
+    ?>
 
 
 <form method="POST" action="">
-    <div class="main">
+<div class="main">
         <table halign="center">
             <tr>
                 <td>
-                    <img src="./solorob_logo_alt.png" width="250px" hspace="20">
+                    <img src="./solorob_logo_2.png" width="250px" hspace="20">
                 </td>
             </tr>
             <tr>
@@ -106,10 +109,11 @@
                 </td>
             </tr>
             <tr>
-                <td align="right">
-                    <input type="submit" name="submit" value="Anmelden">
-                </td>
-            </tr>
+                    <td>
+                        <input type="submit" name="anmelden" value="Anmelden">
+                    </td>
+                </tr>
+                <tr><td></td></tr>
         </table>
     </div>
 </form>
