@@ -1,34 +1,38 @@
-<?php
-session_start();
-require_once("../helpers/validate_access.php");
-validate_access("Wartung");
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ausmusterung</title>
-</head>
-<body>
-    <h1>Komponente Warten</h1>
-    <h3>Komponente die ausgetauscht werden muss:</h3>
-<?php
+<?php session_start();
 require_once("../mysqldb.php");
-
-$kompons = (sql_komponente_list($mysqli, 0,5));
-build_table_from_result($kompons);
 ?>
-<br>
-<h3>Komponente, mit der getauscht werden soll:</h3>
-<?php
-
-$kompons = (sql_komponente_list($mysqli, 0,3));
-build_table_from_result_2($kompons);
-?>
-<br>
-<input type="submit" value="Austauschen">
-</body>
+<html>
+	<head>
+		<link rel="stylesheet" href="../css/mainstyles.css">
+	</head>
+	<h1>Wartung</h1>	
+	
+	<form method=post>
+	<?php
+		$showSecTable=false;
+		if(isset($_POST['auswahlKomponente0'])){
+			if(!isset($_POST['id_selected'])){
+				echo "Es wurde keine Komponente zum Ausmustern ausgewählt!";
+			} else {		
+			echo $_POST['id_selected'], " wird gewartet.";
+			$showSecTable=true;
+			}
+		}	
+		echo "<h3>Zu wartende Komponente auswählen</h3>";
+		build_table_from_result(sql_komponente_list($mysqli, 0, 10));				
+	?>	
+	<input type='submit' name='auswahlKomponente0' value='Auswählen'>			
+	<?php
+		if($showSecTable){	
+		echo "<h3>Mit folgender Kompnente austauschen:</h3>";
+		build_table_from_result(sql_komponente_zum_austauschen_by_komponente($mysqli, $_POST['id_selected'], 0, 10));
+		echo "<input type='submit' name='auswahlKomponente1' value='Komponente warten'>";
+		}	
+	?>
+		
+	
+		
+	</form>
+	
+	
 </html>
