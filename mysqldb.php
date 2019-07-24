@@ -1,6 +1,6 @@
 <?php
-$mysqli = new mysqli("10.10.20.20", "admin", "adminadmin", "solorob_db");
-#$mysqli = new mysqli("127.0.0.1", "admin", "adminadmin", "solorob_db");
+#$mysqli = new mysqli("10.10.20.20", "admin", "adminadmin", "solorob_db");
+$mysqli = new mysqli("127.0.0.1", "admin", "adminadmin", "solorob_db");
 if ($mysqli->connect_error){
     echo "Failed to connect to MySQL: (" . $mysqli->connect_error . ") " . $mysqli->connect_error;
 }

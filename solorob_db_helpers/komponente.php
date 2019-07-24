@@ -33,7 +33,7 @@ function sql_komponente_anlegen(
     if (!$stmt->execute()) {
         echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
     }
-    return $stmt->get_result();
+    return $stmt->insert_id;
 }
 
 function sql_komponente_list(

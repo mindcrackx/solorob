@@ -26,6 +26,7 @@ $komp_lieferant_l_id = "";
 $komp_komponentenarten_ka_id = "";
 
 $btn_step_1_pressed = FALSE;
+$btn_step_2_pressed = FALSE;
 
 if (isset($_POST["btn_step_1"]))
 {
@@ -53,6 +54,7 @@ if (isset($_POST["btn_anlegen"]))
     $komp_komponentenarten_ka_id = $_POST["komp_komponentenarten_ka_id"];
 
     $btn_step_1_pressed = TRUE;
+    $btn_step_2_pressed = TRUE;
     
     $komponentenattribute_form = array();
     $komponentenattribute_sql = (sql_komponentenattribute_by_komponentenart($mysqli, $komp_komponentenarten_ka_id));
@@ -71,7 +73,7 @@ if (isset($_POST["btn_anlegen"]))
     }
     if (! $no_insert)
     {
-        sql_komponente_anlegen(
+        $new_komp_id = sql_komponente_anlegen(
             $mysqli,
             $komp_bezeichnung,
             $komp_raeume_r_id,
@@ -84,16 +86,12 @@ if (isset($_POST["btn_anlegen"]))
         );
         foreach ($komponentenattribute_form as $kompattr_id => $value)
         {
-            echo($value . " " . $kompattr_id);
-            /*
-            # TODO: get komp_id after last insert
             sql_komponentenattribut_fuer_komponente_anlegen(
                 $mysqli,
-                $komp_id,
+                $new_komp_id,
                 $kompattr_id,
                 $value
             );
-            */
         }
         echo("erfolgreich angelegt");
     }
@@ -111,7 +109,10 @@ if (isset($_POST["btn_anlegen"]))
         $lieferanten = (sql_lieferant_list_all($mysqli))->fetch_all(MYSQLI_ASSOC);
         foreach ($lieferanten as $lieferant)
         {
-            echo("<option value=" . $lieferant["l_id"] . ">" . $lieferant["l_firmenname"] . "</option>");
+            if ($lieferant["l_id"] == $komp_lieferant_l_id)
+                echo("<option value=" . $lieferant["l_id"] . " selected='selected'>" . $lieferant["l_firmenname"] . "</option>");
+            else
+                echo("<option value=" . $lieferant["l_id"] . ">" . $lieferant["l_firmenname"] . "</option>");
         }
         ?>
     </select>
@@ -123,7 +124,12 @@ if (isset($_POST["btn_anlegen"]))
         $raeume = (sql_raeume_list_all($mysqli))->fetch_all(MYSQLI_ASSOC);
         foreach ($raeume as $raum)
         {
-            echo("<option value=" . $raum["r_id"] . ">" . $raum["r_nr"] . " - " . $raum["r_bezeichnung"] . "</option>");
+            if ($raum["r_id"] == $komp_raeume_r_id)
+            {
+                echo("<option value=" . $raum["r_id"] . " selected='selected'>" . $raum["r_nr"] . " - " . $raum["r_bezeichnung"] . "</option>");
+            }
+            else
+                echo("<option value=" . $raum["r_id"] . ">" . $raum["r_nr"] . " - " . $raum["r_bezeichnung"] . "</option>");
         }
         ?>
     </select>
@@ -134,7 +140,10 @@ if (isset($_POST["btn_anlegen"]))
         $komponentenarten = (sql_komponentenart_list_all($mysqli))->fetch_all(MYSQLI_ASSOC);
         foreach ($komponentenarten as $kompart)
         {
-            echo("<option value=" . $kompart["ka_id"] . ">" . $kompart["ka_komponentenart"] . "</option>");
+            if ($kompart["ka_id"] == $komp_komponentenarten_ka_id)
+                echo("<option value=" . $kompart["ka_id"] . " selected='selected'>" . $kompart["ka_komponentenart"] . "</option>");
+            else
+                echo("<option value=" . $kompart["ka_id"] . ">" . $kompart["ka_komponentenart"] . "</option>");
         }
         ?>
     </select>
@@ -148,16 +157,22 @@ if (isset($_POST["btn_anlegen"]))
 
     
     <?php
+    if ($btn_step_1_pressed)
+    {
     $komponentenattribute = (sql_komponentenattribute_by_komponentenart($mysqli, $komp_komponentenarten_ka_id));
     echo("<table border='1'>");
     foreach ($komponentenattribute as $kompattribut)
     {
+        $value = "";
+        if ($btn_step_2_pressed && array_key_exists($kompattribut["kat_id"], $komponentenattribute_form))
+            $value = $komponentenattribute_form[$kompattribut["kat_id"]];
         echo("<tr>");
         echo("<td>" . $kompattribut['kat_bezeichnung'] . "</td>");
-        echo("<td><input type='text' name='kompattribut_" . $kompattribut["kat_id"] . "' value=''></td>");
+        echo("<td><input type='text' name='kompattribut_" . $kompattribut["kat_id"] . "' value='" . $value . "'></td>");
         echo("</tr>");
     }
     echo("</table>");
+    }
     ?>
     <input type="submit" name="btn_anlegen" value="Anlegen">
 </form>
