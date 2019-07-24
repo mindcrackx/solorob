@@ -123,20 +123,22 @@ function sql_komponente_update(
 }
 
 
-function sql_komponente_zum_austauschen(
+function sql_komponente_zum_austauschen_by_komponente(
     $mysqli,
-    $komponentenarten_ka_id,
+    $k_id,
     $startNum,
     $howMany
 )
 {
-    $sql = "select * from tbl_komponenten where komponentenarten_ka_id = ? limit ?, ?";
+    $sql = "select * from tbl_komponenten where komponentenarten_ka_id =
+	(select komponentenarten_ka_id from tbl_komponenten where k_id = ?)
+	limit ?, ?";
     if (!($stmt = $mysqli->prepare($sql))) {
         echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
     }
     if (!$stmt->bind_param(
         "iii",
-        $komponentenarten_ka_id,
+        $k_id,
         $startNum,
         $howMany
     )) {
@@ -205,4 +207,28 @@ function sql_komponente_austauschen(
     #result = $stmt->fetch_all(MYSQLI_ASSOC);
     return $stmt->get_result();
 }
+
+
+function sql_komponente_ausmustern(
+    $mysqli,
+    $k_id
+    )
+{
+    $sql = "update tbl_komponenten set raeume_r_id = 1 where k_id = ?";
+    if (!($stmt = $mysqli->prepare($sql))) {
+        echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+    }
+    if (!$stmt->bind_param(
+        "i",
+        $k_id
+    )) {
+        echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+    }
+
+    if (!$stmt->execute()) {
+        echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+    }
+    return $stmt->get_result();
+}
+
 ?>
