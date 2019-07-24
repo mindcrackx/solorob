@@ -141,6 +141,31 @@ function sql_komponentenattribute_by_komponentenart(
 }
 
 
+function sql_komponentenattribute_by_komponente_id(
+    $mysqli,
+    $k_id
+)
+{
+    $sql = "select kat.kat_id, kat.kat_bezeichnung 
+    from tbl_komponente_hat_attribute as kha
+    inner join tbl_komponentenattribute as kat on kat.kat_id = kha.komponentenattribute_kat_id
+    where kha.komponenten_k_id = ?";
+    if (!($stmt = $mysqli->prepare($sql))) {
+        echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+    }
+    if (!$stmt->bind_param(
+        "i",
+        $k_id
+    )) {
+        echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+    }
+    if (!$stmt->execute()) {
+        echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+    }
+    return $stmt->get_result();
+}
+
+
 function sql_komponentenattribut_fuer_komponente_anlegen(
     $mysqli,
     $komponente_id,

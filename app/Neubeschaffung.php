@@ -86,6 +86,7 @@ if (isset($_POST["btn_anlegen"]))
         {
             echo($value . " " . $kompattr_id);
             /*
+            # TODO: get komp_id after last insert
             sql_komponentenattribut_fuer_komponente_anlegen(
                 $mysqli,
                 $komp_id,
