@@ -11,6 +11,28 @@ validate_access("Stammdatenverwaltung");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Räume Verwaltung</title>
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+        }
+        h1 {
+            color: steelblue;
+        }
+        table {
+            border-collapse: collapse;
+            border-style: hidden;
+            border: 0;
+            width: 100%;
+        }
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            border: none;
+        }
+        tr:nth-child(even) {background-color: #f2f2f2;}
+        tr:hover {background-color: rgb(102, 152, 192); color: white}
+    </style>
 </head>
 <body>
 <?php
@@ -24,6 +46,20 @@ $raum_bezeichnung = "";
 $raum_notiz = "";
 
 $aendern_form = FALSE;
+
+$first = 0;
+$last = 20;
+if (isset($_POST["btn_links"])){
+    $first = $_POST["first"] - 20 + 1;
+    $last = $_POST["last"] - 20 + 1;
+}
+if (isset($_POST["btn_rechts"])){
+    $first = $_POST["first"] + 20;
+    $last = $_POST["last"] + 20;
+}
+
+if ($first < 0)
+    $first = 0;
 
 if (isset($_POST["btn_anlegen"]))
 {
@@ -71,14 +107,25 @@ if (isset($_POST["btn_bearbeiten"]))
 <h1>Raum Verwaltung</h1>
 <form action="" method="post">
 <?php 
-build_table_from_result(sql_raeume_list($mysqli, 0, 10));
+build_table_from_result(sql_raeume_list($mysqli, $first, $last));
 ?>
+<br/>
+<input type="hidden" name="first" value="<?php echo $first ?>">
+<input type="hidden" name="last" value="<?php echo $last ?>">
+<?php
+echo('<input type="submit" name="btn_links" value="<" size="5"');
+if ($first === 0)
+    echo(" disabled");
+echo(">");
+?>
+<input type="submit" name="btn_rechts" value=">" size="5">
 <br/>
 <input type="submit" name="btn_duplizieren" value="Duplizieren">
 <input type="submit" name="btn_bearbeiten" value="Bearbeiten">
 <input type="submit" name="btn_loeschen" value="Löschen">
 </form>
 
+<div class="createbot">
 <form action="" method="post">
 <?php
 if ($aendern_form)
@@ -103,5 +150,6 @@ else
     echo('<input type="submit" name="btn_anlegen" value="Anlegen">');
 ?>
 </form>
+</div>
 </body>
 </html>

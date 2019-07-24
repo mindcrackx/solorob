@@ -13,11 +13,12 @@
     <link rel="stylesheet" href="../css/font-awesome.min.css">
     <title>solorob - IT-Verwaltung</title>
     <style>
+        /* Kompletter HTML-Body (Schriftart) */
         body {
             font-family: "Lato", sans-serif;
         }
 
-        /* Fixed sidenav, full height */
+        /* Navigation Seitenleiste */
         .sidenav {
             height: 100%;
             width: 300px;
@@ -30,8 +31,9 @@
             padding-top: 20px;
         }
 
+        /* Navigation Seitenleiste - Footer */
         .sidenavbut {
-            height: 43px;
+            height: 90px;
             width: 300px;
             position: fixed;
             z-index: 1;
@@ -47,7 +49,7 @@
             text-align: center;
         }
 
-        /* Style the sidenav links and the dropdown button */
+        /* Navigation Seitenleiste - Style Schrift & Buttons */
         .sidenav a,
         .dropdown-btn {
             padding: 6px 8px 6px 16px;
@@ -63,6 +65,7 @@
             outline: none;
         }
 
+        /* Navigation Seitenleiste - Footer Style Schrift */
         .sidenavbut a {
             text-decoration: none;
             font-size: 13px;
@@ -74,43 +77,35 @@
             outline: none;
         }
 
-        /* On mouse-over */
+        /* Navigation Seitenleiste - Schrift & Button Hover */
         .sidenav a:hover,
         .dropdown-btn:hover {
             color: #f1f1f1;
         }
 
-        /* Main content */
-        .main {
-            margin-left: 300px;
-            /* Same as the width of the sidenav */
-            font-size: 20px;
-            /* Increased text to enable scrolling */
-            padding: 0px 10px;
-            height: 100%;
-            width: 100%;
-        }
-
+        /* Hauptseite - iFrame */
         .iframe-container {
             overflow: hidden;
+            height: 100%;
+            width: 100%;
+            margin-right: 300px;
             /*Calculated from the aspect ration of the content (in case of 16:9 it is 9/16= 0.5625)*/
             padding-top: 56.25%;
             position: relative;
         }
-
         .iframe-container iframe {
-            margin-left: 300px;
             border: 0;
-            height: 100%;
-            left: 0;
+            left: 300px;
+            margin-right: 600px;
             position: absolute;
             top: 0;
+            height: 100%;
             width: 100%;
         }
 
-        /* Add an active class to the active dropdown button */
+        /* Aktiver Button */
         .active {
-            background-color: steelblue;
+            background-color: rgb(102, 152, 192);
             color: white;
         }
 
@@ -201,6 +196,7 @@
     </div>
 
     <div class="sidenavbut">
+        <a href="./logout.php"><button>Ausloggen</button></a><br><br>
         © 2019 - solorob - IT-Verwaltung <br>
         <a href="./Hilfe.html" target="mainframe">Hilfe • </a>
         <a href="./Sitemap.html" target="mainframe">Sitemap • </a>

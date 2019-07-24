@@ -35,6 +35,22 @@
 
         }
 
+        .mainbot {
+            height: 20px;
+            width: 300px;
+            position: fixed;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            bottom: 0px;
+            overflow-x: hidden;
+            padding-bottom: 0px;
+            text-decoration: none;
+            font-size: 15px;
+            color: white;
+            text-align: center;
+        }
+
         td,
         th {
             border-left: solid black 0px;
@@ -117,6 +133,9 @@
         </table>
     </div>
 </form>
+<div class="mainbot">
+    © 2019 - solorob - IT-Verwaltung<br>
+</div>
 </body>
 
 </html>
