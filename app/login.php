@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../css/font-awesome.min.css">
     <title>solorob - IT-Verwaltung</title>
     <style>
         body {
@@ -31,12 +30,13 @@
             border-radius: 16px;
             background-color: white;
             border: 5px rgb(102, 152, 192);
+            border-style: line;
             -moz-border-radius: 16px;
 
         }
 
         .mainbot {
-            height: 20px;
+            height: 14px;
             width: 300px;
             position: fixed;
             left: 50%;
@@ -46,8 +46,8 @@
             overflow-x: hidden;
             padding-bottom: 0px;
             text-decoration: none;
-            font-size: 15px;
-            color: white;
+            font-size: 12px;
+            color: rgb(224, 224, 224);
             text-align: center;
         }
 
@@ -57,6 +57,7 @@
             border-top: solid black 0px;
             padding-left: 20px;
             padding-right: 20px;
+            width: 300px;
         }
 
         th {
@@ -64,9 +65,15 @@
             border-top: none;
         }
 
-        .main input {
-            width: 300px;
-        }
+        input[type=submit] {
+    width: 10em;
+}
+
+input[type=button] {
+    width: 10em;
+}
+
+
     </style>
 </head>
 
@@ -98,6 +105,7 @@
 
 <form method="POST" action="">
 <div class="main">
+    <div class="td2">
         <table halign="center">
             <tr>
                 <td>
@@ -124,12 +132,14 @@
                     <input type="password" name="password" placeholder="" size="41">
                 </td>
             </tr>
+    </div>
             <tr>
-                    <td>
-                        <input type="submit" name="anmelden" value="Anmelden">
+                    <td align= center>
+                    <br>
+                        <input type="submit" name="anmelden" value="Anmelden"/>
+                        <a href="../static/Loginhilfe.html" target="_blank"><input type="button" value="Hilfe"></a>
                     </td>
                 </tr>
-                <tr><td></td></tr>
         </table>
     </div>
 </form>

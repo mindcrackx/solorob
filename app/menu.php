@@ -44,7 +44,7 @@
             padding-top: 15px;
             padding-bottom: 0px;
             text-decoration: none;
-            font-size: 15px;
+            font-size: 12px;
             color: white;
             text-align: center;
         }
@@ -54,7 +54,7 @@
         .dropdown-btn {
             padding: 6px 8px 6px 16px;
             text-decoration: none;
-            font-size: 20px;
+            font-size: 18px;
             color: white;
             display: block;
             border: none;
@@ -68,7 +68,7 @@
         /* Navigation Seitenleiste - Footer Style Schrift */
         .sidenavbut a {
             text-decoration: none;
-            font-size: 13px;
+            font-size: 14px;
             color: white;
             border: none;
             background: none;
@@ -90,13 +90,13 @@
             width: 100%;
             margin-right: 300px;
             /*Calculated from the aspect ration of the content (in case of 16:9 it is 9/16= 0.5625)*/
-            padding-top: 56.25%;
-            position: relative;
+            /*padding-top: 56.25%;
+            position: relative;*/
         }
         .iframe-container iframe {
             border: 0;
             left: 300px;
-            margin-right: 600px;
+            margin-right: 300px;
             position: absolute;
             top: 0;
             height: 100%;
@@ -168,6 +168,7 @@
         <a href="./Startseite.html" target="mainframe">Startseite</a>
 
         <?php
+        $dropdown = false;
         foreach ($_SESSION["funktionen"] as $funktion)
         {
             if ($funktion === "Neubeschaffung")
@@ -175,7 +176,10 @@
             elseif ($funktion === "Stammdatenverwaltung")
             {
                 echo('<button class="dropdown-btn">Stammdatenverwaltung');
-                echo('<i class="fa fa-caret-down"></i>');
+                if($dropdown === false)
+                    echo('<img class="fa-caret-left" src="../static/carrotleft.png" width="15" vspace="2">');
+                else
+                    echo('<img class="fa-caret-down" src="../static/carrotdown.png" width="15" vspace="2">');
                 echo('</button>');
                 echo('<div class="dropdown-container">');
                 echo('<a href="./Lieferanten.php" target="mainframe">• Lieferanten</a>');
@@ -197,10 +201,9 @@
 
     <div class="sidenavbut">
         <a href="./logout.php"><button>Ausloggen</button></a><br><br>
-        © 2019 - solorob - IT-Verwaltung <br>
-        <a href="./Hilfe.html" target="mainframe">Hilfe • </a>
-        <a href="./Sitemap.html" target="mainframe">Sitemap • </a>
-        <a href="./Impressum.html" target="mainframe">Impressum</a>
+        <a href="../static/Hilfe.html" target="mainframe">Hilfe • </a>
+        <a href="../static/Impressum.html" target="mainframe">Impressum</a><br><br>
+        © 2019 - solorob - IT-Verwaltung
     </div>
 
     <div class="iframe-container">
