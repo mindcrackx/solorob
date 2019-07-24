@@ -69,7 +69,6 @@ if (isset($_POST["btn_anlegen"]))
         }
         $komponentenattribute_form[$kompattribut["kat_id"]] = $wert;
     }
-    print_r($komponentenattribute_form);
     if (! $no_insert)
     {
         sql_komponente_anlegen(
@@ -83,9 +82,17 @@ if (isset($_POST["btn_anlegen"]))
             $komp_hersteller,
             $komp_komponentenarten_ka_id
         );
-        foreach ($komponentenattribute_form as $id => $value)
+        foreach ($komponentenattribute_form as $kompattr_id => $value)
         {
-
+            echo($value . " " . $kompattr_id);
+            /*
+            sql_komponentenattribut_fuer_komponente_anlegen(
+                $mysqli,
+                $komp_id,
+                $kompattr_id,
+                $value
+            );
+            */
         }
         echo("erfolgreich angelegt");
     }

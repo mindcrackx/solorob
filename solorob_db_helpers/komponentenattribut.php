@@ -141,7 +141,7 @@ function sql_komponentenattribute_by_komponentenart(
 }
 
 
-function sql_komponentenattribut_für_komponente_anlegen(
+function sql_komponentenattribut_fuer_komponente_anlegen(
     $mysqli,
     $komponente_id,
     $komponentenattribut_id,
