@@ -25,19 +25,20 @@ $raum_notiz = "";
 
 $aendern_form = FALSE;
 
+$pagination_step = 10;
 $first = 0;
-$last = 20;
+$last = $pagination_step;
 if (isset($_POST["btn_links"])){
-    $first = $_POST["first"] - 20;
-    $last = $_POST["last"] - 20;
+    $first = $_POST["first"] - $pagination_step;
+    $last = $_POST["last"] - $pagination_step;
 }
 if (isset($_POST["btn_rechts"])){
-    $first = $_POST["first"] + 20;
-    $last = $_POST["last"] + 20;
+    $first = $_POST["first"] + $pagination_step;
+    $last = $_POST["last"] + $pagination_step;
 }
-
 if ($first < 0)
     $first = 0;
+
 
 if (isset($_POST["btn_anlegen"]))
 {
