@@ -12,28 +12,6 @@ validate_access("Stammdatenverwaltung");
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../css/mainstyles.css">
     <title>Räume Verwaltung</title>
-    <style>
-        body {
-            font-family: "Lato", sans-serif;
-        }
-        h1 {
-            color: steelblue;
-        }
-        table {
-            border-collapse: collapse;
-            border-style: hidden;
-            border: 0;
-            width: 100%;
-        }
-        th, td {
-            text-align: left;
-            padding: 8px;
-            border-bottom: 1px solid #ddd;
-            border: none;
-        }
-        tr:nth-child(even) {background-color: #f2f2f2;}
-        tr:hover {background-color: rgb(102, 152, 192); color: white}
-    </style>
 </head>
 <body>
 <?php
@@ -50,8 +28,8 @@ $aendern_form = FALSE;
 $first = 0;
 $last = 20;
 if (isset($_POST["btn_links"])){
-    $first = $_POST["first"] - 20 + 1;
-    $last = $_POST["last"] - 20 + 1;
+    $first = $_POST["first"] - 20;
+    $last = $_POST["last"] - 20;
 }
 if (isset($_POST["btn_rechts"])){
     $first = $_POST["first"] + 20;
