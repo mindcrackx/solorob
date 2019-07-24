@@ -36,7 +36,6 @@ validate_access("Stammdatenverwaltung");
 </head>
 <body>
 <?php
-session_start();
 if ((! (isset($_SESSION["loggedin"]))) || (! $_SESSION["loggedin"]))
     die("not logged in");
 require_once("../mysqldb.php");
