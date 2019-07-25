@@ -29,7 +29,7 @@
 	<body>
 		<h1>Index Hilfe</h1>
 		<a href = "./NeubeschaffungHilfe.php">Neubeschaffung</a><br/>
-		<a href = "./StammdatenverwaltungHilfe.php">Stammdatenverwaltung</a><br/>
+		<a href = "">Stammdatenverwaltung</a><br/>
 		&nbsp&nbsp&nbsp&nbsp&nbsp <a href = "./LieferantenHilfe.php">Lieferanten</a><br/>
 		&nbsp&nbsp&nbsp&nbsp&nbsp <a href = "./RäumeHilfe.php">Räume</a><br/>
 		&nbsp&nbsp&nbsp&nbsp&nbsp <a href = "./BenutzerHilfe.php">Benutzer</a><br/>

@@ -30,8 +30,8 @@
 		<a href = "./Hilfeindex.php"><button>Zurück</button> </a>
 		<h1>Komponentenattribute</h1>
 		<!--Bild einfügen-->
-		<table style = "width: 50%; border-collapse: collapse;"><tr><td colspan = "3">
-			<img src = "" style = "width: 100%;">
+		<table style = "width: 100%; border-collapse: collapse;"><tr><td colspan = "3">
+			<img src = "../../static/help/06_Stammdaten_Komponentenattribute.png" style = "width: 100%;">
 		<!--Erklärung-->
 			<tr>
 				<td><strong>Indexnummer</strong></td>

@@ -14,7 +14,7 @@
             border-collapse: collapse;
             border-style: hidden;
             border: 0;
-			width: 50%;
+			width: 100%;
 
         }
         th, td {
@@ -29,9 +29,9 @@
 	<body>
 		<a href = "./Hilfeindex.php"><button>Zurück</button> </a>
 		<h1>Benutzer</h1>
-		<table style = "width: 50%; border-collapse: collapse;"><tr><td colspan = "3">
+		<table style = "width: 100%; border-collapse: collapse;"><tr><td colspan = "3">
 			<!--Bild einfügen-->
-			<img src = "" style = "width: 100%;">
+			<img src = "../../static/help/04_Stammdaten_Benuzter.png" style = "width: 100%;">
 			<tr>
 				<td><strong>Indexnummer</strong></td>
 				<td><strong>Name</strong></td>
