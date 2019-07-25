@@ -117,5 +117,45 @@ function build_table_from_result_with_name($result, $name)
         echo("</table>");
     }
 }
+function build_table_from_result_preselected($result, $selectedId)
+{
+    $is_first = TRUE;
+    $row_count = mysqli_num_rows($result);
+    if ($row_count > 0)
+    {
+        echo("<table border=\"1\">");
+        while ($row = mysqli_fetch_assoc($result))
+        {
+            echo("<tr>");
+            if ($is_first)
+            {
+                echo("<td>x</td>");
+                foreach ($row as $key=>$value)
+                {
+                    echo("<td>$key</td>");
+                }
+                echo("</tr>");
+                echo("<tr>");
+            }
+            foreach ($row as $value)
+            {
+               $row_id = $value;
+               break;
+            }
+            if($row_id==$selectedId){
+                echo("<td><input type='radio' name='id_selected' value=\"$row_id\" checked='checked'></td>");
+            } else{
+                echo("<td><input type='radio' name='id_selected' value=\"$row_id\"></td>");
+            }
+            foreach ($row as $value)
+            {
+                echo("<td>$value</td>");
+            }
+            echo("</td>");
+            $is_first = FALSE;
+        }
+        echo("</table>");
+    }
+}
 ?>
 
