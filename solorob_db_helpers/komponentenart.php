@@ -131,5 +131,27 @@ function sql_komponentenart_komponentenattribut_verknüpfen(
     }
     return $stmt->get_result();
 }
+
+
+function sql_komponentenart_delete_wird_beschrieben_durch(
+    $mysqli,
+    $komponentenart_id
+)
+{
+    $sql = "delete from tbl_wird_beschrieben_durch where komponentenarten_ka_id = ?";
+    if (!($stmt = $mysqli->prepare($sql))) {
+        echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+    }
+    if (!$stmt->bind_param(
+        "i",
+        $komponentenart_id
+    )) {
+        echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+    }
+    if (!$stmt->execute()) {
+        echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+    }
+    return $stmt->get_result();
+}
 ?>
 

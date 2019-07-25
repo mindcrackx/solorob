@@ -85,7 +85,8 @@ if (isset($_POST["btn_duplizieren"]))
 }
 if (isset($_POST["btn_loeschen"]))
 {
-    sql_raeume_delete($mysqli, $_POST["id_selected"]);
+    sql_komponentenart_delete_wird_beschrieben_durch($mysqli, $_POST["id_selected"]);
+    sql_komponentenart_delete($mysqli, $_POST["id_selected"]);
 }
 if (isset($_POST["btn_bearbeiten"]))
 {
