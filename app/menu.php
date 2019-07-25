@@ -88,7 +88,7 @@
             overflow: hidden;
             height: 100%;
             width: 100%;
-            margin-left: 300px;
+            left: 300px;
             margin-right: 600px;
             /*Calculated from the aspect ration of the content (in case of 16:9 it is 9/16= 0.5625)*/
             /*padding-top: 56.25%;
@@ -97,12 +97,13 @@
         .iframe-container iframe {
             border: 0;
             left: 300px;
-            margin-left: 300px;
             margin-right: 600px;
+            width: -webkit-calc(100% - 300px);
+            width:    -moz-calc(100% - 300px);
+            width:         calc(100% - 300px);
             position: absolute;
             top: 0;
             height: 100%;
-            width: 100%;
         }
 
         /* Aktiver Button */
