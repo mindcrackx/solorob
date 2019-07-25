@@ -31,11 +31,23 @@ if (isset($_POST["btn_rechts"])){
 if ($first < 0)
     $first = 0;
 
+if(isset($_POST['auswahl']))
+{
+    if(!isset($_POST['id_selected']))
+    {
+        echo "Es wurde keine Komponente zum Ausmustern ausgewählt!";
+    }
+    else
+    {
+        echo $_POST['id_selected'], " wird ausgemustert.";
+        sql_komponente_ausmustern($mysqli, $_POST['id_selected']);
+    }
+}
+echo('<form action="" method="post">');
 $kompons = (sql_komponente_list($mysqli, $first, $last));
 build_table_from_result($kompons);
 ?>
 <br/>
-<form action="" method="post">
     <input type="hidden" name="first" value="<?php echo $first ?>">
     <input type="hidden" name="last" value="<?php echo $last ?>">
     <?php
@@ -45,8 +57,9 @@ build_table_from_result($kompons);
     echo(">");
     ?>
     <input type="submit" name="btn_rechts" value=">" size="5">
+    <br/>
+    <br/>
+    <input type="submit" name="auswahl" value="Ausmustern">
 </form>
-<br/>
-<input type="submit" value="Ausmustern">
 </body>
 </html>
