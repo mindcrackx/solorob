@@ -11,6 +11,7 @@ echo"";
 ?>
 <html>
 	<head>
+	<link rel="shortcut icon" type="image/x-icon" href="../static/favicon.ico">
 		<h1><div align="right"> Herzlich Willkommen in der IT-Ausstattungsverwaltung von Solorob</div></h1>
 	</head>
 	<body>
