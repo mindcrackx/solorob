@@ -112,6 +112,7 @@ build_table_from_result(sql_benutzer_list($mysqli, $first, $last));
 <input type="submit" name="btn_loeschen" value="Löschen">
 </form>
 
+<div class="fixed">
 <form action="" method="post">
 <?php
 if ($aendern_form)
@@ -148,6 +149,7 @@ else
     echo('<input type="submit" name="btn_anlegen" value="Anlegen">');
 ?>
 </form>
+</div>
 </body>
 </html>
 
