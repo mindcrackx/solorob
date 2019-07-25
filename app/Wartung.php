@@ -16,20 +16,28 @@ validate_access("Wartung");
 <body>
     <h1>Komponente Warten</h1>
     <h3>Komponente die ausgetauscht werden muss:</h3>
-<?php
-require_once("../mysqldb.php");
+	<form method=post>
+    <?php
+    require_once("../mysqldb.php");
+    $showSecTable=false;
 
-$kompons = (sql_komponente_list($mysqli, 0,5));
-build_table_from_result($kompons);
-?>
-<br>
-<h3>Komponente, mit der getauscht werden soll:</h3>
-<?php
+    if(isset($_POST['auswahl']))
+    {
+        if(!isset($_POST['id_selected']))
+        {
+            echo "Es wurde keine Komponente zum Ausmustern ausgewählt!";
+        }
+        else
+        {
+            echo $_POST['id_selected'], " wird gewartet.";
+            $showSecTable=true;
+        }
+    }	
+    echo "<h3>Zu wartende Komponente auswählen</h3>";
+    build_table_from_result(sql_komponente_list($mysqli, 0, 10));	
+    ?>
 
-$kompons = (sql_komponente_list($mysqli, 0,3));
-build_table_from_result_2($kompons);
-?>
-<br>
-<input type="submit" value="Austauschen">
+    <input type="submit" name="auswahl" value="Auswählen">
+</form>
 </body>
 </html>
