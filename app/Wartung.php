@@ -14,30 +14,68 @@ validate_access("Wartung");
     <title>Ausmusterung</title>
 </head>
 <body>
+
+
     <h1>Komponente Warten</h1>
     <h3>Komponente die ausgetauscht werden muss:</h3>
 	<form method=post>
-    <?php
-    require_once("../mysqldb.php");
-    $showSecTable=false;
+        <?php
+        require_once("../mysqldb.php");
+        $showSecTable=false;
 
-    if(isset($_POST['auswahl']))
-    {
-        if(!isset($_POST['id_selected']))
-        {
-            echo "Es wurde keine Komponente zum Ausmustern ausgewählt!";
+        //pages...
+        $pagination_step = 10;
+        $first = 0;
+        $last = $pagination_step;
+        if (isset($_POST["btn_links"])){
+            $first = $_POST["first"] - $pagination_step;
+            $last = $_POST["last"] - $pagination_step;
         }
-        else
-        {
-            echo $_POST['id_selected'], " wird gewartet.";
-            $showSecTable=true;
+        if (isset($_POST["btn_rechts"])){
+            $first = $_POST["first"] + $pagination_step;
+            $last = $_POST["last"] + $pagination_step;
         }
-    }	
-    echo "<h3>Zu wartende Komponente auswählen</h3>";
-    build_table_from_result(sql_komponente_list($mysqli, 0, 10));	
+        if ($first < 0)
+        $first = 0;
+        //...pages
+
+        //aufs Form reagieren...
+        if(isset($_POST['auswahl'])){
+            if(isset($_POST['id_selected'])){
+                //TODO: hinterlegen der id und speichern für zweite tabelle, im nachinen prüfen ob andere ID gewählt wurde.....
+                $showSecTable=true;
+            }else{
+                echo "keine Komponente zum Warten ausgewählt!";
+            }
+            if(isset($_POST['id_selected_1'])){
+                sql_komponente_austauschen($mysqli, $_POST['id_selected_1'], $_POST['id_selected']);
+                echo "<h3>id: ", $_POST['id_selected'], " wurde mit: ", $_POST['id_selected_1'], " gewartet.</h3>";
+            }
+        }
+   
+        echo "<h3>Zu wartende Komponente auswählen</h3>";
+        
+        if($showSecTable){
+            build_table_from_result_preselected(sql_komponente_list($mysqli, $first, $last), $_POST['id_selected']);
+            echo "<br>";
+            echo "<br>";
+            build_table_from_result_with_name(sql_komponente_zum_austauschen_by_komponente($mysqli, $_POST['id_selected'], $first, $last), 'id_selected_1' );
+        } else{
+            build_table_from_result(sql_komponente_list($mysqli, $first, $last));
+        }
     ?>
-
+    <!--pages form...-->
+    <input type="hidden" name="first" value="<?php echo $first ?>">
+    <input type="hidden" name="last" value="<?php echo $last ?>">
+    <?php
+    echo('<input type="submit" name="btn_links" value="<" size="5"');
+    if ($first === 0)
+        echo(" disabled");
+    echo(">");
+    ?>
+    <input type="submit" name="btn_rechts" value=">" size="5">
+    <!--...pages form-->
     <input type="submit" name="auswahl" value="Auswählen">
-</form>
+    </form>
 </body>
 </html>
