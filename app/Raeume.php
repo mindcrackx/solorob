@@ -107,11 +107,11 @@ if ($aendern_form)
 else
     echo("<h1>Neuanlage</h1>");
 ?>
-    <input type="text" name="raum_nr" placeholder="Raum Nummer" value="<?php echo($raum_nr) ?>">
+    <input type="text" name="raum_nr" placeholder="Nummer" value="<?php echo($raum_nr) ?>">
     <br/>
-    <input type="text" name="raum_bezeichnung" placeholder="Raum Bezeichnung" value="<?php echo($raum_bezeichnung) ?>">
+    <input type="text" name="raum_bezeichnung" placeholder="Bezeichnung" value="<?php echo($raum_bezeichnung) ?>">
     <br/>
-    <input type="text" name="raum_notiz" placeholder="Raum Notiz" value="<?php echo($raum_notiz) ?>">
+    <input type="text" name="raum_notiz" placeholder="Notiz" value="<?php echo($raum_notiz) ?>">
     <br/>
 <?php
 if ($aendern_form)
