@@ -33,7 +33,7 @@ if (! isset($_SESSION["Wartung.php"]))
                 $first[0] = $_POST["first_0"] + $pagination_step[0];
 
             if ($first[0] < 0)
-                $first = [0];
+                $first[0] = 0;
             //...pages...
             $pagination_step[1] = 10;
             $first[1] = 0;
@@ -72,7 +72,7 @@ if (! isset($_SESSION["Wartung.php"]))
             }
     
             if(!$showSecTable){
-                echo('<input type="hidden" name="first_0"       value="<?php echo $first[0] ?>">');    
+                echo('<input type="hidden" name="first_0"       value="' . $first[0] . '">');    
                 echo('<input type="submit" name="btn_links_0"   value="<"               size="5"');
                 if ($first[0] === 0)
                     echo(" disabled");
@@ -83,7 +83,7 @@ if (! isset($_SESSION["Wartung.php"]))
                 echo "<br>";
                 build_table_from_result_with_name(sql_komponente_zum_austauschen_by_komponente($mysqli, $_POST['id_selected'], $first[1], $last[1]), 'id_selected_1' );
                 echo "<br>";
-                echo('<input type="hidden" name="first_1"       value="<?php echo $first[1] ?>">');    
+                echo('<input type="hidden" name="first_1"       value="' . $first[1] . '">');    
                 echo('<input type="submit" name="btn_links_1"   value="<"               size="5"');
                 if ($first[1] === 0)
                     echo(" disabled");
