@@ -131,7 +131,7 @@ else
 ?>
 <?php
 # show komponentenattribute for linking to komponentenart in tbl_wird_beschrieben_durch
-build_table_from_result_with_name(sql_komponentenattribut_list($mysqli, $first_kompattr, $last_kompattr), "id_selected_kompattr");
+build_table_from_result_with_name_checkbox(sql_komponentenattribut_list($mysqli, $first_kompattr, $last_kompattr), "id_selected_kompattr");
 ?>
 <br/>
 <input type="hidden" name="first_kompattr" value="<?php echo $first_kompattr ?>">
