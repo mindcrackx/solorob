@@ -37,14 +37,32 @@ if ($first < 0)
 
 if (isset($_POST["btn_anlegen"]))
 {
-    $raum_nr = $_POST["raum_nr"];
-    $raum_bezeichnung = $_POST["raum_bezeichnung"];
-    $raum_notiz = $_POST["raum_notiz"];
-    if (! ($raum_nr && $raum_bezeichnung))
+    $darf_anlegen = TRUE;
+    $kompart_name = $_POST["kompart_name"];
+    if (! $kompart_name)
     {
-        echo("Nicht alle daten ausgefüllt");
+        $darf_anlegen = FALSE;
+        echo("Nicht alle Formularfelder wurden ausgefüllt");
     }
-    sql_raeume_create($mysqli, $raum_nr, $raum_bezeichnung, $raum_notiz);
+    # search listbox for ids
+    $kompattr_ids_selected = array();
+    foreach ($_POST as $key => $value)
+    {
+        $split = preg_split("/^kompattr_id_/", $key);
+        if (isset($split[1]))
+            $kompattr_ids_selected[] = $split[1];
+    }
+    # komponentenart anlegen
+    $new_kompart_id = sql_komponentenart_anlegen($mysqli, $kompart_name);
+
+    if ($darf_anlegen)
+    {
+        foreach ($kompattr_ids_selected as $kompattr_id)
+        {
+            sql_komponentenart_komponentenattribut_verknüpfen($mysqli, $new_kompart_id, $kompattr_id);
+        }
+        echo("Erfolgreich angelegt");
+    }
 }
 if (isset($_POST["btn_update"]))
 {
@@ -120,7 +138,7 @@ else
 ?>
 <?php
 # show komponentenattribute for linking to komponentenart in tbl_wird_beschrieben_durch
-build_table_from_result_with_name_checkbox(sql_komponentenattribut_list_all($mysqli));
+build_table_from_result_with_name_checkbox(sql_komponentenattribut_list_all($mysqli), "kompattr_id_");
 ?>
 </form>
 </div>

@@ -1,6 +1,6 @@
 <?php
-$mysqli = new mysqli("10.10.20.20", "admin", "adminadmin", "solorob_db");
-#$mysqli = new mysqli("127.0.0.1", "admin", "adminadmin", "solorob_db");
+#$mysqli = new mysqli("10.10.20.20", "admin", "adminadmin", "solorob_db");
+$mysqli = new mysqli("127.0.0.1", "admin", "adminadmin", "solorob_db");
 if ($mysqli->connect_error){
     echo "Failed to connect to MySQL: (" . $mysqli->connect_error . ") " . $mysqli->connect_error;
 }
@@ -118,7 +118,7 @@ function build_table_from_result_with_name($result, $name)
     }
 }
 
-function build_table_from_result_with_name_checkbox($result)
+function build_table_from_result_with_name_checkbox($result, $prefix)
 {
     $is_first = TRUE;
     $row_count = mysqli_num_rows($result);
@@ -143,7 +143,7 @@ function build_table_from_result_with_name_checkbox($result)
                $row_id = $value;
                break;
             }
-            echo("<td><input type='checkbox' name='" . $row_id . "'></td>");
+            echo("<td><input type='checkbox' name='" . $prefix . $row_id . "'></td>");
             foreach ($row as $value)
             {
                 echo("<td>$value</td>");

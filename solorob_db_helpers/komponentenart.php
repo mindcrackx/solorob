@@ -18,7 +18,7 @@ function sql_komponentenart_anlegen(
     if (!$stmt->execute()) {
         echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
     }
-    return $stmt->get_result();
+    return $stmt->insert_id;
 }
 
 function sql_komponentenart_list(
@@ -100,6 +100,31 @@ function sql_komponentenart_list_all(
     $sql = "select * from tbl_komponentenarten";
     if (!($stmt = $mysqli->prepare($sql))) {
         echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+    }
+    if (!$stmt->execute()) {
+        echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+    }
+    return $stmt->get_result();
+}
+
+
+function sql_komponentenart_komponentenattribut_verknüpfen(
+    $mysqli,
+    $komponentenart_id,
+    $komponentenattribut_id
+)
+{
+    $sql = "insert into tbl_wird_beschrieben_durch (komponentenarten_ka_id, komponentenattribute_kat_id)
+    values (?, ?)";
+    if (!($stmt = $mysqli->prepare($sql))) {
+        echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+    }
+    if (!$stmt->bind_param(
+        "ii",
+        $komponentenart_id,
+        $komponentenattribut_id
+    )) {
+        echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
     }
     if (!$stmt->execute()) {
         echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
