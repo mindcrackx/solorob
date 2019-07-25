@@ -33,7 +33,7 @@
             border-style: line;
             border-radius: 16px;
             -moz-border-radius: 16px;
-            -webkit-box-shadow: 5px 5px 1px 0px rgba(0,0,0,0.25); 
+            -webkit-box-shadow: 5px 5px 2.5px 0px rgba(0,0,0,0.25); 
             -moz-box-shadow: 5px 5px 2.5px 0px rgba(0,0,0,0.25);
             box-shadow: 5px 5px 2.5px 0px rgba(0,0,0,0.25);
 
