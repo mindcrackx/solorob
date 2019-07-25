@@ -265,7 +265,9 @@ function sql_komponente_list_reporting(
     $k_gewaehrleistungsdauer,
     $k_notiz,
     $k_hersteller,
-    $ka_komponentenart
+    $ka_komponentenart,
+    $orderBy,
+    $sort
 )
 {
     $sql = "SELECT 
@@ -292,28 +294,49 @@ function sql_komponente_list_reporting(
     and k_einkaufsdatum like ?
     and k_gewaehrleistungsdauer like ?
     and k_notiz like ? 
-    and k_hersteller like ?
+    and tbl_komponenten.k_hersteller like ?
     and ka_komponentenart like ?
+    
+    ORDER BY 
+    CASE ?
+    WHEN 'k_id' THEN k_id
+    WHEN 'r_nr' THEN r_nr
+    WHEN 'l_firmenname' THEN l_firmenname
+    WHEN 'k_einkaufsdatum' THEN k_einkaufsdatum
+    WHEN 'k_gewaehrleistungsdauer' THEN k_gewaehrleistungsdauer
+    WHEN 'k_notiz' THEN k_notiz
+    WHEN 'k_hersteller' THEN k_hersteller
+    WHEN 'ka_komponentenart' THEN ka_komponentenart
+    END 
+    ";
 
-    limit ?, ?";
-
+    //Sorry for incoming Pasta... At least it works ;)
+    if($sort=='DESC'){
+        $sql=$sql." DESC";
+    }else{
+        $sql=$sql." ASC";
+    }
+    
+    $sql=$sql." LIMIT ";
+    $sql=$sql.$startNum;
+    $sql=$sql.", ";
+    $sql=$sql.$howMany;
+    
     if (!($stmt = $mysqli->prepare($sql))) {
         echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
     }
     if (!$stmt->bind_param(
-        "sssssssssii",
+        "sssssssss",
         $bezeichnung,
         $r_nr,
         $l_firmenname,
         $k_einkaufsdatum,
-        $k_hersteller,
         $k_gewaehrleistungsdauer,
         $k_notiz,
         $k_hersteller,
         $ka_komponentenart,
 
-        $startNum,
-        $howMany
+        $orderBy,
     )) {
         echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
     }
