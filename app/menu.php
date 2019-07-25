@@ -88,7 +88,8 @@
             overflow: hidden;
             height: 100%;
             width: 100%;
-            margin-right: 300px;
+            margin-left: 300px;
+            margin-right: 600px;
             /*Calculated from the aspect ration of the content (in case of 16:9 it is 9/16= 0.5625)*/
             /*padding-top: 56.25%;
             position: relative;*/
@@ -96,7 +97,8 @@
         .iframe-container iframe {
             border: 0;
             left: 300px;
-            margin-right: 300px;
+            margin-left: 300px;
+            margin-right: 600px;
             position: absolute;
             top: 0;
             height: 100%;

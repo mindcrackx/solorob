@@ -1,15 +1,12 @@
 <html>
 	<head>
 		<title>Hilfe</title>
-		<meta charset = „UTF-8“/>
+		<meta charset="UTF-8">
 		<style>
-			td,tr {
-				border: 2px solid black;
-				padding: 10px;
+			body{
+				font-family: "Lato", sans-serif;
+				width: 100%
 			}
-			body {
-            font-family: "Lato", sans-serif;
-        }
         h1 {
             color: steelblue;
         }
@@ -17,26 +14,28 @@
             border-collapse: collapse;
             border-style: hidden;
             border: 0;
-            width: 100%;
+			width: 50%;
+
         }
         th, td {
             text-align: left;
             padding: 8px;
             border-bottom: 1px solid #ddd;
             border: none;
-        }
+		}
+		tr:nth-child(even) {background-color: #f2f2f2;}
 		</style>
 	</head>
 	<body>
-		<h2><center>Login-Screen</center></h2>
+		<h1>Login-Screen</h1>
 		<!--Bild einfügen-->
-		<center><table style = "width: 100%;"><tr><td>
+		<table><tr><td>
 			<img src = "./login_bild.png" style = "width: 100%;">
-		</td></tr></table></center>
+		</td></tr></table>
 		<br/>
 		<br/>
 		<!--Erklärung-->
-		<table style = "border-collapse: collapse; border: 2px solid black;">
+		<table>
 			<tr>
 				<td><strong>Indexnummer</strong></td>
 				<td><strong>Name</strong></td>
