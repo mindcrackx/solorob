@@ -7,6 +7,17 @@
 	}
 </style>
 <?php
-	echo "<h1>Herzlich Willkommen in der IT-Ausstattungsverwaltung von Solorob</h1>", "<h3>Sollten Sie Hilfe benötigen, sind wir jederzeit für Sie da!</h3>", "<h4> Support Telefon: <a href='tel:+49911756650'>0911 / 7 56 65 - 0	</a></h4>";
-	echo "<h4>e-Mail: <a href='mailto:support@if11i.b3-fuerth.de'>support@if11i.b3-fuerth.de</a>";	
+echo"";
 ?>
+<html>
+	<head>
+		<h1><div align="right"> Herzlich Willkommen in der IT-Ausstattungsverwaltung von Solorob</div></h1>
+	</head>
+	<body>
+		<h3><div align="right">Sollten Sie Hilfe benötigen, sind wir rund um die Uhr für Sie da!</div></h3>
+		<div align="right">Support Telefon: <a href='tel:+49911756650'>0911 / 7 56 65 - 0</a>
+			<br>
+			e-Mail: <a href='mailto:support@if11i.b3-fuerth.de'>support@if11i.b3-fuerth.de<a/>
+		</div>
+	</body>
+</html>

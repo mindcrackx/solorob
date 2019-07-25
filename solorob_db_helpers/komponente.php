@@ -197,7 +197,7 @@ function sql_komponente_austauschen(
     if (!$stmt->bind_param(
         "ii",
         $raeume_r_id_zum_austauschen,
-        $new_k_id
+        $old_k_id
     )) {
         echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
     }
@@ -230,5 +230,29 @@ function sql_komponente_ausmustern(
     }
     return $stmt->get_result();
 }
+
+function sql_komponente_list_one(
+        $mysqli,
+        $k_id
+    )
+    {
+        $sql = "select * from tbl_komponenten where k_id=?";
+        if (!($stmt = $mysqli->prepare($sql))) {
+            echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+        }
+        if (!$stmt->bind_param(
+            "i",
+            $k_id
+        )) {
+            echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+        }
+    
+        if (!$stmt->execute()) {
+            echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+        }
+        #result = $stmt->fetch_all(MYSQLI_ASSOC);
+        return $stmt->get_result();
+    }
+
 
 ?>
