@@ -20,17 +20,14 @@ require_once("../mysqldb.php");
 $pagination_step = 10;
 $first = 0;
 $last = $pagination_step;
-if (isset($_POST["btn_links"])){
+if (isset($_POST["btn_links"]))
     $first = $_POST["first"] - $pagination_step;
-    $last = $_POST["last"] - $pagination_step;
-}
-if (isset($_POST["btn_rechts"])){
+
+if (isset($_POST["btn_rechts"]))
     $first = $_POST["first"] + $pagination_step;
-    $last = $_POST["last"] + $pagination_step;
-}
+
 if ($first < 0)
     $first = 0;
-
 
 $kmpatr_bezeichnung = "";
 
@@ -81,7 +78,6 @@ build_table_from_result(sql_komponentenattribut_list($mysqli, $first, $last));
 <br/>
 <form action="" method="post">
     <input type="hidden" name="first" value="<?php echo $first ?>">
-    <input type="hidden" name="last" value="<?php echo $last ?>">
     <?php
     echo('<input type="submit" name="btn_links" value="<" size="5"');
     if ($first === 0)

@@ -27,14 +27,12 @@ validate_access("Wartung");
         $pagination_step = 10;
         $first = 0;
         $last = $pagination_step;
-        if (isset($_POST["btn_links"])){
+        if (isset($_POST["btn_links"]))
             $first = $_POST["first"] - $pagination_step;
-            $last = $_POST["last"] - $pagination_step;
-        }
-        if (isset($_POST["btn_rechts"])){
+
+        if (isset($_POST["btn_rechts"]))
             $first = $_POST["first"] + $pagination_step;
-            $last = $_POST["last"] + $pagination_step;
-        }
+
         if ($first < 0)
         $first = 0;
         //...pages
@@ -66,7 +64,6 @@ validate_access("Wartung");
     ?>
     <!--pages form...-->
     <input type="hidden" name="first" value="<?php echo $first ?>">
-    <input type="hidden" name="last" value="<?php echo $last ?>">
     <?php
     echo('<input type="submit" name="btn_links" value="<" size="5"');
     if ($first === 0)

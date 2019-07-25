@@ -11,15 +11,13 @@ validate_access("Stammdatenverwaltung");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../css/mainstyles.css">
-    <title>Räume Verwaltung</title>
+    <title>Komponentenarten Verwaltung</title>
 </head>
 <body>
 <?php
 require_once("../mysqldb.php");
 
-$raum_nr = "";
-$raum_bezeichnung = "";
-$raum_notiz = "";
+$kompart_name = "";
 
 $aendern_form = FALSE;
 
@@ -34,6 +32,18 @@ if (isset($_POST["btn_rechts"]))
 
 if ($first < 0)
     $first = 0;
+
+$pagination_step_kompattr = 10;
+$first_kompattr = 0;
+$last_kompattr = $pagination_step_kompattr;
+if (isset($_POST["btn_links_kompattr"]))
+    $first_kompattr = $_POST["first_kompattr"] - $pagination_step_kompattr;
+
+if (isset($_POST["btn_rechts_kompattr"]))
+    $first_kompattr = $_POST["first_kompattr"] + $pagination_step_kompattr;
+
+if ($first_kompattr < 0)
+    $first_kompattr = 0;
 
 
 if (isset($_POST["btn_anlegen"]))
@@ -79,10 +89,10 @@ if (isset($_POST["btn_bearbeiten"]))
     $raum_notiz = $raum_ausgewaehlt_result["r_notiz"];
 }
 ?>
-<h1>Raum Verwaltung</h1>
+<h1>Komponentenarten Verwaltung</h1>
 <form action="" method="post">
 <?php 
-build_table_from_result(sql_raeume_list($mysqli, $first, $last));
+build_table_from_result(sql_komponentenart_list($mysqli, $first, $last));
 ?>
 <br/>
 <input type="hidden" name="first" value="<?php echo $first ?>">
@@ -107,11 +117,7 @@ if ($aendern_form)
 else
     echo("<h1>Neuanlage</h1>");
 ?>
-    <input type="text" name="raum_nr" placeholder="Raum Nummer" value="<?php echo($raum_nr) ?>">
-    <br/>
-    <input type="text" name="raum_bezeichnung" placeholder="Raum Bezeichnung" value="<?php echo($raum_bezeichnung) ?>">
-    <br/>
-    <input type="text" name="raum_notiz" placeholder="Raum Notiz" value="<?php echo($raum_notiz) ?>">
+    <input type="text" name="kompart_name" placeholder="Komponentenart Name" value="<?php echo($kompart_name) ?>">
     <br/>
 <?php
 if ($aendern_form)
@@ -123,6 +129,20 @@ if ($aendern_form)
 else
     echo('<input type="submit" name="btn_anlegen" value="Anlegen">');
 ?>
+<?php
+# show komponentenattribute for linking to komponentenart in tbl_wird_beschrieben_durch
+build_table_from_result_with_name(sql_komponentenattribut_list($mysqli, $first_kompattr, $last_kompattr), "id_selected_kompattr");
+?>
+<br/>
+<input type="hidden" name="first_kompattr" value="<?php echo $first_kompattr ?>">
+<?php
+echo('<input type="submit" name="btn_links_kompattr" value="<" size="5"');
+if ($first_kompattr === 0)
+    echo(" disabled");
+echo(">");
+?>
+<input type="submit" name="btn_rechts_kompattr" value=">" size="5">
+<br/>
 </form>
 </div>
 </body>

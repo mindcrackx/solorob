@@ -99,8 +99,9 @@ if (isset($_POST["btn_anlegen"]))
 
 ?>
 <!-- Formular step_1 -->
-<h1>Komponenten Neubeschaffung</h1> <input type="submit" value="Duplizieren">
+<h1>Komponenten Neubeschaffung</h1>
 <form action="" method="post">
+    <input type="submit" value="Duplizieren">
     <h3>Komponenten Neuanlage</h3>
     <input type="text" name="komp_bezeichnung" placeholder="Komponenten Bezeichnung" value="<?php echo($komp_bezeichnung)?>">
 
