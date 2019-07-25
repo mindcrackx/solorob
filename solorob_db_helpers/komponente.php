@@ -286,40 +286,4 @@ function sql_komponente_list_reporting(
     return $stmt->get_result();
 }
 
-function sql_komponente_anlegen(
-    $mysqli,
-    $bezeichnung,
-    $raeume_r_id,
-    $lieferant_l_id,
-    $einkaufsdatum,
-    $gewaehrleistungsdauer,
-    $notiz,
-    $hersteller,
-    $komponentenarten_ka_id
-)
-{
-    $sql = "insert into tbl_komponenten(k_bezeichnung, raeume_r_id, lieferant_l_id, k_einkaufsdatum, k_gewaehrleistungsdauer, k_notiz, k_hersteller, komponentenarten_ka_id)
-    values (?, ?, ?, ?, ?, ?, ?, ?)";
-    if (!($stmt = $mysqli->prepare($sql))) {
-        echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
-    }
-    if (!$stmt->bind_param(
-        "siisissi",
-        $bezeichnung,
-        $raeume_r_id,
-        $lieferant_l_id,
-        $einkaufsdatum,
-        $gewaehrleistungsdauer,
-        $notiz,
-        $hersteller,
-        $komponentenarten_ka_id
-    )) {
-        echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
-    }
-
-    if (!$stmt->execute()) {
-        echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
-    }
-    return $stmt->insert_id;
-}
 ?>
