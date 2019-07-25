@@ -168,7 +168,7 @@
     <div class="sidenav">
         <img src="../static/solorob_logo.png" width="200px" hspace="20px">
         <br><br><br>
-        <a href="./Startseite.html" target="mainframe">Startseite</a>
+        <a href="./main.php" target="mainframe">Startseite</a>
 
         <?php
         $dropdown = false;
@@ -207,7 +207,7 @@
     </div>
 
     <div class="iframe-container">
-        <iframe src="./Startseite.html" name="mainframe"></iframe>
+        <iframe src="./main.php" name="mainframe"></iframe>
     </div>
 
     <script>
