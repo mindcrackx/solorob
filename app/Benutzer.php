@@ -20,6 +20,10 @@ require_once("../mysqldb.php");
 $pagination_step = 10;
 $first = 0;
 $last = $pagination_step;
+
+if (isset($_POST["first"]))
+    $first = $_POST["first"];
+
 if (isset($_POST["btn_links"]))
     $first = $_POST["first"] - $pagination_step;
 
@@ -49,7 +53,15 @@ if (isset($_POST["btn_anlegen"]))
     {
         echo("Nicht alle daten ausgefüllt");
     }
-    sql_benutzer_anlegen($mysqli, $benutzer_name, $benutzer_vorname, $benutzer_nickname, $benutzer_password, $benutzer_rechte_rolle_id);
+    if (sql_benutzer_check_nickname_unique($mysqli, $benutzer_nickname))
+    {
+        sql_benutzer_anlegen($mysqli, $benutzer_name, $benutzer_vorname, $benutzer_nickname, $benutzer_password, $benutzer_rechte_rolle_id);
+        echo("Benutzer erfolgreich angelegt");
+    }
+    else
+        echo("Nickname schon vergeben");
+
+    
 }
 if (isset($_POST["btn_update"]))
 {
@@ -96,7 +108,6 @@ if (isset($_POST["btn_bearbeiten"]))
 build_table_from_result(sql_benutzer_list($mysqli, $first, $last));
 ?>
 <br/>
-<form action="" method="post">
     <input type="hidden" name="first" value="<?php echo $first ?>">
     <?php
     echo('<input type="submit" name="btn_links" value="<" size="5"');
@@ -105,15 +116,11 @@ build_table_from_result(sql_benutzer_list($mysqli, $first, $last));
     echo(">");
     ?>
     <input type="submit" name="btn_rechts" value=">" size="5">
-</form>
 <br/>
 <input type="submit" name="btn_duplizieren" value="Duplizieren">
 <input type="submit" name="btn_bearbeiten" value="Bearbeiten">
 <input type="submit" name="btn_loeschen" value="Löschen">
-</form>
 
-<div class="fixed">
-<form action="" method="post">
 <?php
 if ($aendern_form)
     echo("<h1>Bearbeiten von ID: " . $_POST['id_selected'] . "</h1>");

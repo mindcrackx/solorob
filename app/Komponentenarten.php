@@ -24,6 +24,10 @@ $aendern_form = FALSE;
 $pagination_step = 10;
 $first = 0;
 $last = $pagination_step;
+
+if (isset($_POST["first"]))
+    $first = $_POST["first"];
+
 if (isset($_POST["btn_links"]))
     $first = $_POST["first"] - $pagination_step;
 

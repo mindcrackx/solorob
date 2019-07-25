@@ -20,6 +20,10 @@
         $pagination_step = 10;
         $first = 0;
         $last = $pagination_step;
+
+        if (isset($_POST["first"]))
+            $first = $_POST["first"];
+
         if (isset($_POST["btn_links"]))
             $first = $_POST["first"] - $pagination_step;
 
@@ -58,6 +62,7 @@
             echo("Nicht alle daten ausgefüllt");
         }
         sql_lieferant_anlegen($mysqli, $liefer_firmenname, $liefer_strasse, $liefer_plz, $liefer_ort, $liefer_tel, $liefer_mobil, $liefer_fax, $liefer_email);
+        echo("Lieferant erfolgreich angelegt");
         }
         if (isset($_POST["btn_update"]))
         {
@@ -74,6 +79,7 @@
                 echo("Nicht alle daten ausgefüllt");
             }
             sql_lieferant_update($mysqli, $_POST["id_to_update"], $liefer_firmenname, $liefer_strasse, $liefer_plz, $liefer_ort, $liefer_tel, $liefer_mobil, $liefer_fax, $liefer_email);
+            echo("Lieferant erfolgreich geändert");
         }
 
         if (isset($_POST["btn_duplizieren"]))
@@ -92,7 +98,6 @@
 
         if (isset($_POST["btn_loeschen"]))
         {
-            echo $_POST['id_selected'];
             sql_lieferant_delete($mysqli, $_POST["id_selected"]);
     
         }

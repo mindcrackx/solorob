@@ -26,6 +26,10 @@ $aendern_form = FALSE;
 $pagination_step = 10;
 $first = 0;
 $last = $pagination_step;
+
+if (isset($_POST["first"]))
+    $first = $_POST["first"];
+
 if (isset($_POST["btn_links"]))
     $first = $_POST["first"] - $pagination_step;
 
@@ -97,10 +101,7 @@ echo(">");
 <input type="submit" name="btn_duplizieren" value="Duplizieren">
 <input type="submit" name="btn_bearbeiten" value="Bearbeiten">
 <input type="submit" name="btn_loeschen" value="Löschen">
-</form>
 
-<div class="createbot">
-<form action="" method="post">
 <?php
 if ($aendern_form)
     echo("<h1>Bearbeiten von ID: " . $_POST['id_selected'] . "</h1>");

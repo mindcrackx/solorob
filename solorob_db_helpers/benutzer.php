@@ -222,7 +222,31 @@ function sql_benutzer_list_one(
     if (!$stmt->execute()) {
         echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
     }
-    #result = $stmt->fetch_all(MYSQLI_ASSOC);
     return $stmt->get_result();
+}
+
+
+function sql_benutzer_check_nickname_unique(
+    $mysqli,
+    $b_nickname
+)
+{
+    $sql = "select * from tbl_benutzer where b_nickname = ?";
+    if (!($stmt = $mysqli->prepare($sql))) {
+        echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+    }
+    if (!$stmt->bind_param(
+        "s",
+        $b_nickname
+    )) {
+        echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+    }
+    if (!$stmt->execute()) {
+        echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+    }
+    $result = $stmt->get_result();
+    if ($result->num_rows > 0)
+        return FALSE;
+    return TRUE;
 }
 ?>
