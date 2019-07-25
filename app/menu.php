@@ -21,7 +21,7 @@
         /* Navigation Seitenleiste */
         .sidenav {
             height: 100%;
-            width: 300px;
+            width: 250px;
             position: fixed;
             z-index: 1;
             top: 0px;
@@ -34,7 +34,7 @@
         /* Navigation Seitenleiste - Footer */
         .sidenavbut {
             height: 90px;
-            width: 300px;
+            width: 250px;
             position: fixed;
             z-index: 1;
             bottom: 0px;
@@ -88,7 +88,7 @@
             overflow: hidden;
             height: 100%;
             width: 100%;
-            left: 300px;
+            left: 250px;
             margin-right: 600px;
             /*Calculated from the aspect ration of the content (in case of 16:9 it is 9/16= 0.5625)*/
             /*padding-top: 56.25%;
@@ -96,11 +96,11 @@
         }
         .iframe-container iframe {
             border: 0;
-            left: 300px;
+            left: 250px;
             margin-right: 600px;
-            width: -webkit-calc(100% - 300px);
-            width:    -moz-calc(100% - 300px);
-            width:         calc(100% - 300px);
+            width: -webkit-calc(100% - 250px);
+            width:    -moz-calc(100% - 250px);
+            width:         calc(100% - 250px);
             position: absolute;
             top: 0;
             height: 100%;
@@ -122,12 +122,12 @@
         /* Optional: Style the caret down icon */
         .fa-caret-left {
             float: right;
-            padding-right: 8px;
+            padding-right: 4px;
         }
 
         .fa-caret-down {
             float: right;
-            padding-right: 8px;
+            padding-right: 4px;
         }
 
         /* Some media queries for responsiveness */
@@ -147,7 +147,7 @@
         @media screen and (max-width: 400px) {
             .sidenav {
                 height: 100%;
-                width: 300px;
+                width: 250px;
                 position: fixed;
                 z-index: 1;
                 top: 0;
@@ -166,7 +166,7 @@
 
 <body>
     <div class="sidenav">
-        <img src="../static/solorob_logo.png" width="200px" hspace="50px">
+        <img src="../static/solorob_logo.png" width="200px" hspace="20px">
         <br><br><br>
         <a href="./Startseite.html" target="mainframe">Startseite</a>
 
@@ -179,10 +179,7 @@
             elseif ($funktion === "Stammdatenverwaltung")
             {
                 echo('<button class="dropdown-btn">Stammdatenverwaltung');
-                if($dropdown === false)
-                    echo('<img class="fa-caret-left" src="../static/carrotleft.png" width="15" vspace="2">');
-                else
-                    echo('<img class="fa-caret-down" src="../static/carrotdown.png" width="15" vspace="2">');
+                echo('<img class="fa-caret-down" src="../static/carrotdown.png" width="13" vspace="4">');
                 echo('</button>');
                 echo('<div class="dropdown-container">');
                 echo('<a href="./Lieferanten.php" target="mainframe">• Lieferanten</a>');
@@ -224,6 +221,7 @@
                 var dropdownContent = this.nextElementSibling;
                 if (dropdownContent.style.display === "block") {
                     dropdownContent.style.display = "none";
+                    $dropdown = true;
                 } else {
                     dropdownContent.style.display = "block";
                 }
