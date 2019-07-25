@@ -81,7 +81,7 @@ function build_table_from_result($result)
         echo("</table>");
     }
 }
-function build_table_from_result_2($result)
+function build_table_from_result_with_name($result, $name)
 {
     $is_first = TRUE;
     $row_count = mysqli_num_rows($result);
@@ -106,7 +106,7 @@ function build_table_from_result_2($result)
                $row_id = $value;
                break;
             }
-            echo("<td><input type='radio' name='id_selected_2' value=\"$row_id\"></td>");
+            echo("<td><input type='radio' name='" . $name . "' value=\"$row_id\"></td>");
             foreach ($row as $value)
             {
                 echo("<td>$value</td>");
