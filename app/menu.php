@@ -54,7 +54,7 @@
         .dropdown-btn {
             padding: 6px 8px 6px 16px;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 16px;
             color: white;
             display: block;
             border: none;
@@ -139,7 +139,7 @@
             }
 
             .sidenav a {
-                font-size: 18px;
+                font-size: 16px;
             }
         }
 
@@ -158,7 +158,7 @@
             }
 
             .sidenav a {
-                font-size: 18px;
+                font-size: 16px;
             }
         }
     </style>
@@ -201,7 +201,7 @@
 
     <div class="sidenavbut">
         <a href="./logout.php"><button>Ausloggen</button></a><br><br>
-        <a href="../static/Hilfe.html" target="mainframe">Hilfe • </a>
+        <a href="./help/Hilfeindex.php" target="mainframe">Hilfe • </a>
         <a href="../static/Impressum.html" target="mainframe">Impressum</a><br><br>
         © 2019 - solorob - IT-Verwaltung
     </div>
