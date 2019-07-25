@@ -3,7 +3,8 @@ session_start();
 require_once("../helpers/validate_access.php");
 require_once("../mysqldb.php");
 validate_access("Wartung");
-$_SESSION['Wartung.php'];
+if (! isset($_SESSION["Wartung.php"]))
+    $_SESSION['Wartung.php'] = array();
 ?>
 
 <!DOCTYPE html>
