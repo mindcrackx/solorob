@@ -32,7 +32,7 @@ $_SESSION['Wartung.php'];
                 $first[0] = $_POST["first_0"] + $pagination_step[0];
 
             if ($first[0] < 0)
-            $first = [0];
+                $first = [0];
             //...pages...
             $pagination_step[1] = 10;
             $first[1] = 0;
