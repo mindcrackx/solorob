@@ -16,7 +16,7 @@
 </head>
 <body>
     <?php
-        build_table_from_result(sql_komponente_list_reporting($mysqli, 0, 10));
+        build_table_from_result(sql_komponente_list_reporting($mysqli, 0, 10, "%1%"));
     ?>
 </body>
 </html>
