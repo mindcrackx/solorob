@@ -19,13 +19,21 @@ if (! isset($_SESSION["Wartung.php"]))
 <body>
     <h1>Komponente Warten</h1>
     <h3>Komponente die ausgetauscht werden muss:</h3>
-	<form method=post>
+	<form action="" method="post">
         <?php
-            $showSecTable=false;
+            if (isset($_POST["showSecTbl"]))
+                $showSecTable=TRUE;
+            else
+                $showSecTable=FALSE;
+
             //pages...
             $pagination_step[0] = 10;
             $first[0] = 0;
             $last[0] = $pagination_step[0];
+
+            if (isset($_POST["first_0"]))
+                $first[0] = $_POST["first_0"];
+
             if (isset($_POST["btn_links_0"]))
                 $first[0] = $_POST["first_0"] - $pagination_step[0];
 
@@ -34,10 +42,15 @@ if (! isset($_SESSION["Wartung.php"]))
 
             if ($first[0] < 0)
                 $first[0] = 0;
+
             //...pages...
             $pagination_step[1] = 10;
             $first[1] = 0;
             $last[1] = $pagination_step[1];
+
+            if (isset($_POST["first_1"]))
+                $first[1] = $_POST["first_1"];
+
             if (isset($_POST["btn_links_1"]))
                 $first[1] = $_POST["first_1"] - $pagination_step[1];
 
@@ -62,10 +75,8 @@ if (! isset($_SESSION["Wartung.php"]))
                 }
             }
    
-            echo "<h3>Zu wartende Komponente auswählen</h3>";
-        
             if($showSecTable){
-                echo $_SESSION['Wartung.php']['idFirstTable'];
+                echo("<input type='hidden' name='showSecTbl' value='" . $showSecTable . "'>");
                 echo build_table_from_result_preselected(sql_komponente_list_one($mysqli, $_SESSION['Wartung.php']['idFirstTable']), $_SESSION['Wartung.php']['idFirstTable']);
             } else{
                 build_table_from_result(sql_komponente_list($mysqli, $first[0], $last[0]));
