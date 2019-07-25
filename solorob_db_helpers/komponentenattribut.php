@@ -46,6 +46,21 @@ function sql_komponentenattribut_list(
     return $stmt->get_result();
 }
 
+
+function sql_komponentenattribut_list_all(
+    $mysqli
+)
+{
+    $sql = "select * from tbl_komponentenattribute order by kat_bezeichnung";
+    if (!($stmt = $mysqli->prepare($sql))) {
+        echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+    }
+    if (!$stmt->execute()) {
+        echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+    }
+    return $stmt->get_result();
+}
+
 function sql_komponentenattribut_delete(
     $mysqli,
     $kat_id
