@@ -258,22 +258,60 @@ function sql_komponente_list_reporting(
     $mysqli,
     $startNum,
     $howMany,
-    $bezeichnung
-    
+    $bezeichnung,
+    $r_nr,
+    $l_firmenname,
+    $k_einkaufsdatum,
+    $k_gewaehrleistungsdauer,
+    $k_notiz,
+    $k_hersteller,
+    $ka_komponentenart
 )
 {
-    $sql = "SELECT k_id, k_bezeichnung AS Bezeichnung, r_nr AS Raum, l_firmenname AS Firma, k_einkaufsdatum AS Einkaufsdatum, k_hersteller AS Hersteller, k_gewaehrleistungsdauer, k_notiz, k_hersteller, komponentenarten_ka_id
+    $sql = "SELECT 
+    
+    k_id as ID, 
+    k_bezeichnung AS Bezeichnung,
+    r_nr AS Raum,
+    l_firmenname AS Firma,
+    k_einkaufsdatum AS Einkaufsdatum,
+    k_hersteller AS Hersteller,
+    k_gewaehrleistungsdauer as Gewährleistungsdauer,
+    k_notiz as Notiz,
+    k_hersteller as Hersteller,
+    ka_komponentenart as Komponentenart
+
     FROM tbl_komponenten
     LEFT JOIN tbl_raeume ON tbl_komponenten.raeume_r_id = tbl_raeume.r_id
     LEFT JOIN tbl_lieferant ON tbl_komponenten.lieferant_l_id = tbl_lieferant.l_id
-    WHERE r_nr like ?
+    LEFT JOIN tbl_komponentenarten on tbl_komponentenarten.ka_id = tbl_komponenten.komponentenarten_ka_id
+
+    WHERE k_bezeichnung like ?
+    and r_nr like ?
+    and l_firmenname like ?
+    and k_einkaufsdatum like ?
+    and k_gewaehrleistungsdauer like ?
+    and k_notiz like ? 
+    and k_hersteller like ?
+    and ka_komponentenart like ?
+
     limit ?, ?";
+
     if (!($stmt = $mysqli->prepare($sql))) {
         echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
     }
     if (!$stmt->bind_param(
-        "sii",
+        "sssssssssii",
         $bezeichnung,
+        $r_nr,
+        $l_firmenname,
+        $k_einkaufsdatum,
+        $k_hersteller,
+        $k_gewaehrleistungsdauer,
+        $k_notiz,
+        $k_hersteller,
+        $ka_komponentenart,
+
         $startNum,
         $howMany
     )) {
