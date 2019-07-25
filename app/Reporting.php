@@ -55,7 +55,7 @@
         echo("Sortieren:  Aufsteigend");
         echo("<input type='radio' name='sort' value='ASC'> Absteigend <input type='radio' name='sort' value='DESC'><br>");
 
-        build_table_from_result_reporting(sql_komponente_list_reporting($mysqli, 0, 10, $sql0, $sql1, $sql2, $sql3, $sql4, $sql5, $sql6, $sql7, $orderBy, $sort)); 
+        build_table_from_result_reporting(sql_komponente_list_reporting($mysqli, 0, 9999, $sql0, $sql1, $sql2, $sql3, $sql4, $sql5, $sql6, $sql7, $orderBy, $sort)); 
         // $mysqli,$startNum,$howMany,$bezeichnung,$r_nr,$l_firmenname,$k_einkaufsdatum,$k_gewaehrleistungsdauer,$k_notiz,$k_hersteller,$ka_komponentenart
         echo ('<br>');
         echo('<input type="submit" value="Filter setzen" name="setFilter"');
