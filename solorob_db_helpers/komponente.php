@@ -57,7 +57,6 @@ function sql_komponente_list(
     if (!$stmt->execute()) {
         echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
     }
-    #result = $stmt->fetch_all(MYSQLI_ASSOC);
     return $stmt->get_result();
 }
 
@@ -80,7 +79,6 @@ function sql_komponente_delete(
     if (!$stmt->execute()) {
         echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
     }
-    #result = $stmt->fetch_all(MYSQLI_ASSOC);
     return $stmt->get_result();
 }
 
@@ -148,7 +146,6 @@ function sql_komponente_zum_austauschen_by_komponente(
     if (!$stmt->execute()) {
         echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
     }
-    #result = $stmt->fetch_all(MYSQLI_ASSOC);
     return $stmt->get_result();
 }
 
@@ -175,7 +172,7 @@ function sql_komponente_austauschen(
     $result = $stmt->get_result();
     $raeume_r_id_zum_austauschen = $result->fetch_assoc()["raeume_r_id"];
 
-    # old komponent gets put into "Lager"
+    # old komponent gets put into "Warten"
     $sql = "update tbl_komponenten set raeume_r_id = 2 where k_id = ?";
     if (!($stmt = $mysqli->prepare($sql))) {
         echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
@@ -250,7 +247,6 @@ function sql_komponente_list_one(
         if (!$stmt->execute()) {
             echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
         }
-        #result = $stmt->fetch_all(MYSQLI_ASSOC);
         return $stmt->get_result();
     }
 
@@ -336,7 +332,7 @@ function sql_komponente_list_reporting(
         $k_hersteller,
         $ka_komponentenart,
 
-        $orderBy,
+        $orderBy
     )) {
         echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
     }
@@ -344,8 +340,28 @@ function sql_komponente_list_reporting(
     if (!$stmt->execute()) {
         echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
     }
-    #result = $stmt->fetch_all(MYSQLI_ASSOC);
     return $stmt->get_result();
 }
 
+function sql_komponente_get_komponente_hat_attribute(
+    $mysqli,
+    $k_id
+    )
+{
+    $sql = "select * from tbl_komponente_hat_attribute where komponenten_k_id = ?";
+    if (!($stmt = $mysqli->prepare($sql))) {
+        echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+    }
+    if (!$stmt->bind_param(
+        "i",
+        $k_id
+    )) {
+        echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+    }
+
+    if (!$stmt->execute()) {
+        echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+    }
+    return $stmt->get_result();
+}
 ?>

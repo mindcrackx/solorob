@@ -29,6 +29,30 @@ $komp_komponentenarten_ka_id = "";
 $btn_step_1_pressed = FALSE;
 $btn_step_2_pressed = FALSE;
 
+if (isset($_GET["id"]))
+{
+    $btn_step_1_pressed = TRUE;
+
+    $komponente_id_selected = $_GET["id"];
+    $komponente_sql = (sql_komponente_list_one($mysqli, $komponente_id_selected))->fetch_assoc();
+
+    $komp_bezeichnung = $komponente_sql["k_bezeichnung"];
+    $komp_gewaehrleistungsdauer = $komponente_sql["k_gewaehrleistungsdauer"];
+    $komp_hersteller = $komponente_sql["k_hersteller"];
+    $komp_notiz = $komponente_sql["k_notiz"];
+    $komp_einkaufsdatum = $komponente_sql["k_einkaufsdatum"];
+    $komp_raeume_r_id = $komponente_sql["raeume_r_id"];
+    $komp_lieferant_l_id = $komponente_sql["lieferant_l_id"];
+    $komp_komponentenarten_ka_id = $komponente_sql["komponentenarten_ka_id"];
+
+    $komponentenattr_sql_dupe = (sql_komponente_get_komponente_hat_attribute($mysqli, $komponente_id_selected))->fetch_all(MYSQLI_ASSOC);
+}
+
+if (isset($_POST["btn_duplicate"]))
+{
+    header("location: Neubeschaffung_duplicate.php");
+}
+
 if (isset($_POST["btn_step_1"]))
 {
     $komp_bezeichnung = $_POST["komp_bezeichnung"];
@@ -102,7 +126,7 @@ if (isset($_POST["btn_anlegen"]))
 <!-- Formular step_1 -->
 <h1>Komponenten Neubeschaffung</h1>
 <form action="" method="post">
-    <input type="submit" value="Duplizieren">
+    <input type="submit" name="btn_duplicate" value="Duplizieren">
     <h3>Komponenten Neuanlage</h3>
     <input type="text" name="komp_bezeichnung" placeholder="Komponenten Bezeichnung" value="<?php echo($komp_bezeichnung)?>">
 
@@ -168,6 +192,14 @@ if (isset($_POST["btn_anlegen"]))
         $value = "";
         if ($btn_step_2_pressed && array_key_exists($kompattribut["kat_id"], $komponentenattribute_form))
             $value = $komponentenattribute_form[$kompattribut["kat_id"]];
+        elseif (isset($komponentenattr_sql_dupe))
+        {
+            foreach ($komponentenattr_sql_dupe as $kattr_dupe)
+            {
+                if ($kattr_dupe["komponentenattribute_kat_id"] === $kompattribut["kat_id"])
+                    $value = $kattr_dupe["khkat_wert"];
+            }
+        }
         echo("<tr>");
         echo("<td>" . $kompattribut['kat_bezeichnung'] . "</td>");
         echo("<td><input type='text' name='kompattribut_" . $kompattribut["kat_id"] . "' value='" . $value . "'></td>");
