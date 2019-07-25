@@ -118,7 +118,7 @@ function build_table_from_result_with_name($result, $name)
     }
 }
 
-function build_table_from_result_with_name_checkbox($result, $name)
+function build_table_from_result_with_name_checkbox($result)
 {
     $is_first = TRUE;
     $row_count = mysqli_num_rows($result);

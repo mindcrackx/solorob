@@ -33,17 +33,6 @@ if (isset($_POST["btn_rechts"]))
 if ($first < 0)
     $first = 0;
 
-$pagination_step_kompattr = 10;
-$first_kompattr = 0;
-$last_kompattr = $pagination_step_kompattr;
-if (isset($_POST["btn_links_kompattr"]))
-    $first_kompattr = $_POST["first_kompattr"] - $pagination_step_kompattr;
-
-if (isset($_POST["btn_rechts_kompattr"]))
-    $first_kompattr = $_POST["first_kompattr"] + $pagination_step_kompattr;
-
-if ($first_kompattr < 0)
-    $first_kompattr = 0;
 
 
 if (isset($_POST["btn_anlegen"]))
@@ -131,18 +120,8 @@ else
 ?>
 <?php
 # show komponentenattribute for linking to komponentenart in tbl_wird_beschrieben_durch
-build_table_from_result_with_name_checkbox(sql_komponentenattribut_list($mysqli, $first_kompattr, $last_kompattr), "id_selected_kompattr");
+build_table_from_result_with_name_checkbox(sql_komponentenattribut_list_all($mysqli));
 ?>
-<br/>
-<input type="hidden" name="first_kompattr" value="<?php echo $first_kompattr ?>">
-<?php
-echo('<input type="submit" name="btn_links_kompattr" value="<" size="5"');
-if ($first_kompattr === 0)
-    echo(" disabled");
-echo(">");
-?>
-<input type="submit" name="btn_rechts_kompattr" value=">" size="5">
-<br/>
 </form>
 </div>
 </body>
