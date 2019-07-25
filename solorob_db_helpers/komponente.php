@@ -197,7 +197,7 @@ function sql_komponente_austauschen(
     if (!$stmt->bind_param(
         "ii",
         $raeume_r_id_zum_austauschen,
-        $old_k_id
+        $new_k_id
     )) {
         echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
     }
