@@ -92,7 +92,6 @@
 
         if (isset($_POST["btn_loeschen"]))
         {
-            echo "FUCK YOU";
             echo $_POST['id_selected'];
             sql_lieferant_delete($mysqli, $_POST["id_selected"]);
     
@@ -117,7 +116,6 @@
         build_table_from_result(sql_lieferant_list($mysqli, $first, $last));
     ?>
     <br/>
-    <form action="" method="post">
         <input type="hidden" name="first" value="<?php echo $first ?>">
         <?php
             echo('<input type="submit" name="btn_links" value="<" size="5"');
@@ -126,15 +124,11 @@
             echo(">");
         ?>
         <input type="submit" name="btn_rechts" value=">" size="5">
-    </form>
     <br/>
-   <!-- form?! --> 
     <input type="submit" name="btn_duplizieren" value="Duplizieren">
     <input type="submit" name="btn_bearbeiten" value="Bearbeiten">
     <input type="submit" name="btn_loeschen" value="Löschen">
-    </form>
 
-    <form action="" method="post">
     <?php
     if ($aendern_form)
         echo("<h1>Bearbeiten von ID: " . $_POST['id_selected'] . "</h1>");

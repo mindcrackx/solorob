@@ -61,6 +61,29 @@ function sql_lieferant_list(
 }
 
 
+function sql_lieferant_list_one(
+    $mysqli,
+    $l_id
+)
+{
+    $sql = "select * from tbl_lieferant where l_id = ?";
+    if (!($stmt = $mysqli->prepare($sql))) {
+        echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+    }
+    if (!$stmt->bind_param(
+        "i",
+        $l_id
+    )) {
+        echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+    }
+
+    if (!$stmt->execute()) {
+        echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+    }
+    return $stmt->get_result();
+}
+
+
 function sql_lieferant_list_all(
     $mysqli
 )
