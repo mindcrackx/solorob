@@ -10,6 +10,7 @@ validate_access("Neubeschaffung");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/mainstyles.css">
     <title>Neubeschaffung</title>
 </head>
 <body>
@@ -149,8 +150,8 @@ if (isset($_POST["btn_anlegen"]))
         ?>
     </select>
     <br/>
-    <input type="text" name="komp_hersteller" placeholder="Komponenten Hersteller" value="<?php echo($komp_hersteller)?>">
-    <input type="date" name="komp_einkaufsdatum" placeholder="Komponenten Einkaufsdatum" value="<?php echo($komp_einkaufsdatum)?>">
+    <input type="text" name="komp_hersteller" placeholder="Hersteller" value="<?php echo($komp_hersteller)?>">
+    <input type="date" name="komp_einkaufsdatum" placeholder="Einkaufsdatum" value="<?php echo($komp_einkaufsdatum)?>">
     <br/>
     <input type="submit" name="btn_step_1" value="Weiter">
 

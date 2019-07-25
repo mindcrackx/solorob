@@ -112,6 +112,7 @@ build_table_from_result(sql_benutzer_list($mysqli, $first, $last));
 <input type="submit" name="btn_loeschen" value="Löschen">
 </form>
 
+<div class="fixed">
 <form action="" method="post">
 <?php
 if ($aendern_form)
@@ -119,13 +120,13 @@ if ($aendern_form)
 else
     echo("<h1>Neuanlage</h1>");
 ?>
-    <input type="text" name="benutzer_name" placeholder="Benutzer Name" value="<?php echo($benutzer_name) ?>">
+    <input type="text" name="benutzer_name" placeholder="Name" value="<?php echo($benutzer_name) ?>">
     <br/>
-    <input type="text" name="benutzer_vorname" placeholder="Benutzer Vorname" value="<?php echo($benutzer_vorname) ?>">
+    <input type="text" name="benutzer_vorname" placeholder="Vorname" value="<?php echo($benutzer_vorname) ?>">
     <br/>
-    <input type="text" name="benutzer_nickname" placeholder="Benutzer Nickname" value="<?php echo($benutzer_nickname) ?>">
+    <input type="text" name="benutzer_nickname" placeholder="Nickname" value="<?php echo($benutzer_nickname) ?>">
     <br/>
-    <input type="password" name="benutzer_password" placeholder="Benutzer Passwort" value="">
+    <input type="password" name="benutzer_password" placeholder="Passwort" value="">
     <br/>
     <select name="benutzer_rechte_rolle_id">
         <?php
@@ -148,6 +149,7 @@ else
     echo('<input type="submit" name="btn_anlegen" value="Anlegen">');
 ?>
 </form>
+</div>
 </body>
 </html>
 

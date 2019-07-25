@@ -29,6 +29,9 @@
             background-color: steelblue;
             overflow-x: hidden;
             padding-top: 20px;
+            -webkit-box-shadow: 2.5px 0px 2.5px 0px rgba(0,0,0,0.25); 
+            -moz-box-shadow: 2.5px 0px 2.5px 0px rgba(0,0,0,0.25);
+            box-shadow: 2.5px 0px 2.5px 0px rgba(0,0,0,0.25);
         }
 
         /* Navigation Seitenleiste - Footer */
@@ -96,11 +99,11 @@
         }
         .iframe-container iframe {
             border: 0;
-            left: 250px;
+            left: 258px;
             margin-right: 600px;
-            width: -webkit-calc(100% - 250px);
-            width:    -moz-calc(100% - 250px);
-            width:         calc(100% - 250px);
+            width: -webkit-calc(100% - 266px);
+            width:    -moz-calc(100% - 266px);
+            width:         calc(100% - 266px);
             position: absolute;
             top: 0;
             height: 100%;

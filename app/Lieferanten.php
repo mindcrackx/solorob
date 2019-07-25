@@ -135,22 +135,24 @@ if ($aendern_form)
 else
     echo("<h1>Neuanlage</h1>");
 ?>
-    <input type="text" name="liefer_firmenname" placeholder="liefer Name" value="<?php echo($liefer_firmenname) ?>">
+<table>
+    <input type="text" name="liefer_firmenname" placeholder="Name" value="<?php echo($liefer_firmenname) ?>">
     <br/>
-    <input type="text" name="liefer_strasse" placeholder="liefer Strasse" value="<?php echo($liefer_strasse) ?>">
+    <input type="text" name="liefer_strasse" placeholder="Straße" value="<?php echo($liefer_strasse) ?>">
     <br/>
-    <input type="text" name="liefer_plz" placeholder="liefer Plz" value="<?php echo($liefer_plz) ?>">
+    <input type="text" name="liefer_plz" placeholder="PLZ" value="<?php echo($liefer_plz) ?>">
     <br/>
-    <input type="text" name="liefer_ort" placeholder="liefer Ort" value="<?php echo($liefer_ort) ?>">
+    <input type="text" name="liefer_ort" placeholder="Ort" value="<?php echo($liefer_ort) ?>">
     <br/>
-    <input type="text" name="liefer_tel" placeholder="liefer Tel" value="<?php echo($liefer_tel) ?>">
+    <input type="text" name="liefer_tel" placeholder="Telefon" value="<?php echo($liefer_tel) ?>">
     <br/>
-    <input type="text" name="liefer_mobil" placeholder="liefer Mobil" value="<?php echo($liefer_mobil) ?>">
+    <input type="text" name="liefer_mobil" placeholder="Mobil" value="<?php echo($liefer_mobil) ?>">
     <br/>
-    <input type="text" name="liefer_fax" placeholder="liefer Fax" value="<?php echo($liefer_fax) ?>">
+    <input type="text" name="liefer_fax" placeholder="Fax" value="<?php echo($liefer_fax) ?>">
     <br/>
-    <input type="text" name="liefer_email" placeholder="liefer Email" value="<?php echo($liefer_email) ?>">
+    <input type="text" name="liefer_email" placeholder="E-Mail" value="<?php echo($liefer_email) ?>">
     <br/>
+</table>
 <?php
 if ($aendern_form)
 {

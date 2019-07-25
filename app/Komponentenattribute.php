@@ -99,7 +99,7 @@ if ($aendern_form)
 else
     echo("<h1>Neuanlage</h1>");
 ?>
-    <input type="text" name="kmpatr_bezeichnung" placeholder="kmpatr Bezeichnung" value="<?php echo($kmpatr_bezeichnung) ?>">
+    <input type="text" name="kmpatr_bezeichnung" placeholder="Bezeichnung" value="<?php echo($kmpatr_bezeichnung) ?>">
     <br/>
 <?php
 if ($aendern_form)
