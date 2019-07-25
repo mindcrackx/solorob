@@ -259,13 +259,14 @@ function sql_komponente_list_reporting(
     $startNum,
     $howMany,
     $bezeichnung
+    
 )
 {
     $sql = "SELECT k_id, k_bezeichnung AS Bezeichnung, r_nr AS Raum, l_firmenname AS Firma, k_einkaufsdatum AS Einkaufsdatum, k_hersteller AS Hersteller, k_gewaehrleistungsdauer, k_notiz, k_hersteller, komponentenarten_ka_id
     FROM tbl_komponenten
     LEFT JOIN tbl_raeume ON tbl_komponenten.raeume_r_id = tbl_raeume.r_id
     LEFT JOIN tbl_lieferant ON tbl_komponenten.lieferant_l_id = tbl_lieferant.l_id
-    WHERE k_bezeichnung like ?
+    WHERE r_nr like ?
     limit ?, ?";
     if (!($stmt = $mysqli->prepare($sql))) {
         echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
