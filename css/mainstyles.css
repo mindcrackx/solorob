@@ -1,5 +1,6 @@
 body {
     font-family: "Lato", sans-serif;
+    overflow: visible;
 }
 h1 {
     color: steelblue;
@@ -19,5 +20,17 @@ table tr:first-child td {
     background-color: rgb(102, 152, 192);
     color: white;
 }
+
+/* .fixed{
+    position: fixed;
+    background-color: steelblue;
+    padding: 16px 16px 16px 16px;
+    bottom: 16px;
+} */
+
+input{
+    font-size: 16px;
+}
+
 tr:nth-child(even) {background-color: #E8E8E8;}
 tr:hover {background-color: rgb(102, 152, 192); color: white}
