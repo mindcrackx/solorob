@@ -105,7 +105,7 @@ function build_table_from_result_reporting($result)
                     <td><input type='radio' name='orderBy' value='k_id'</td>
                     <td><input type='radio' name='orderBy' value='bezeichnung'</td>
                     <td><input type='radio' name='orderBy' value='r_nr'</td>
-                    <td><input type='radio' name='orderBy' value='l_firenname'</td>
+                    <td><input type='radio' name='orderBy' value='l_firmenname'</td>
                     <td><input type='radio' name='orderBy' value='K_einkaufsdatum'</td>
                     <td><input type='radio' name='orderBy' value='k_hersteller'</td>
                     <td><input type='radio' name='orderBy' value='k_gewaehrleistungsdauer'</td>
