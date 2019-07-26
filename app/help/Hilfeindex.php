@@ -28,15 +28,15 @@
 	</head>
 	<body>
 		<h1>Index Hilfe</h1>
-		<a href = "./NeubeschaffungHilfe.php">Neubeschaffung</a><br/>
+		<a href = "">Neubeschaffung</a><br/>
 		<a href = "">Stammdatenverwaltung</a><br/>
-		&nbsp&nbsp&nbsp&nbsp&nbsp <a href = "./LieferantenHilfe.php">Lieferanten</a><br/>
-		&nbsp&nbsp&nbsp&nbsp&nbsp <a href = "./RäumeHilfe.php">Räume</a><br/>
-		&nbsp&nbsp&nbsp&nbsp&nbsp <a href = "./BenutzerHilfe.php">Benutzer</a><br/>
-		&nbsp&nbsp&nbsp&nbsp&nbsp <a href = "./KompontentenartenHilfe.php">Komponentenarten</a><br/>
-		&nbsp&nbsp&nbsp&nbsp&nbsp <a href = "./KomponentenattributeHilfe.php">Kompontentenattribute</a><br/>
-		<a href = "./AusmusterungHilfe.php">Ausmusterung</a><br/>
-		<a href = "./WartungHilfe.php">Wartung</a><br/>
-		<a href = "./ReportingHilfe.php">Reporting</a><br/>
+		&nbsp&nbsp&nbsp&nbsp&nbsp <a href = "./LieferantenHilfe.php"><b>Lieferanten</b></a><br/>
+		&nbsp&nbsp&nbsp&nbsp&nbsp <a href = "">Räume</a><br/>
+		&nbsp&nbsp&nbsp&nbsp&nbsp <a href = "">Benutzer</a><br/>
+		&nbsp&nbsp&nbsp&nbsp&nbsp <a href = "./KompontentenartenHilfe.php"><b>Komponentenarten</b></a><br/>
+		&nbsp&nbsp&nbsp&nbsp&nbsp <a href = "./KomponentenattributeHilfe.php"><b>Kompontentenattribute</b></a><br/>
+		<a href = "./AusmusterungHilfe.php"><b>Ausmusterung</b></a><br/>
+		<a href = "./WartungHilfe.php"><b>Wartung</b></a><br/>
+		<a href = "">Reporting</a><br/>
 	</body>
 </html>
