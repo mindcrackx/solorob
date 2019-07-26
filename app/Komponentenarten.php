@@ -139,10 +139,8 @@ else
 ?>
 <?php
 # show komponentenattribute for linking to komponentenart in tbl_wird_beschrieben_durch
-print_r($kompart_wbd_result);
-#build_table_from_result_with_name_checkbox(sql_komponentenattribut_list_all($mysqli), "kompattr_id_");
     $result = sql_komponentenattribut_list_all($mysqli);
-    $prefix = "kompatr_id_";
+    $prefix = "kompattr_id_";
 
     $is_first = TRUE;
     $found_wdb = FALSE;
