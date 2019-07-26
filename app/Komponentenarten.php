@@ -70,14 +70,39 @@ if (isset($_POST["btn_anlegen"]))
 }
 if (isset($_POST["btn_update"]))
 {
-    $raum_nr = $_POST["raum_nr"];
-    $raum_bezeichnung = $_POST["raum_bezeichnung"];
-    $raum_notiz = $_POST["raum_notiz"];
-    if (! ($raum_nr && $raum_bezeichnung))
+    $darf_updaten = TRUE;
+    $kompart_id = $_POST["id_to_update"];
+    $kompart_name = $_POST["kompart_name"];
+    if (! ($kompart_name && $kompart_id))
     {
-        echo("Nicht alle daten ausgefüllt");
+        $darf_anlegen = FALSE;
+        echo("Nicht alle Formularfelder wurden ausgefüllt");
     }
-    sql_raeume_update($mysqli, $_POST["id_to_update"], $raum_nr, $raum_bezeichnung, $raum_notiz);
+    # search listbox for ids
+    $kompattr_ids_selected = array();
+    foreach ($_POST as $key => $value)
+    {
+        $split = preg_split("/^kompattr_id_/", $key);
+        if (isset($split[1]))
+            $kompattr_ids_selected[] = $split[1];
+    }
+
+    if ($darf_updaten)
+    {
+        # komponentenart updaten
+        sql_komponentenart_update($mysqli, $kompart_id, $kompart_name);
+
+        #bisherigen wbd löschen
+        sql_komponentenart_delete_wird_beschrieben_durch($mysqli, $kompart_id);
+
+        # wdb wieder anlegen
+        echo "<br><br>" . print_r($kompattr_ids_selected) . "<br><br>";
+        foreach ($kompattr_ids_selected as $kompattr_id)
+        {
+            sql_komponentenart_komponentenattribut_verknüpfen($mysqli, $kompart_id, $kompattr_id);
+        }
+        echo("Erfolgreich geändert");
+    }
 }
 
 if (isset($_POST["btn_duplizieren"]))
@@ -94,10 +119,9 @@ if (isset($_POST["btn_loeschen"]))
 if (isset($_POST["btn_bearbeiten"]))
 {
     $aendern_form = TRUE;     
-    $raum_ausgewaehlt_result = (sql_raeume_list_one($mysqli, $_POST["id_selected"]))->fetch_assoc();
-    $raum_nr = $raum_ausgewaehlt_result["r_nr"];
-    $raum_bezeichnung = $raum_ausgewaehlt_result["r_bezeichnung"];
-    $raum_notiz = $raum_ausgewaehlt_result["r_notiz"];
+    $kompart_ausgewaehlt_result = (sql_komponentenart_list_one($mysqli, $_POST["id_selected"]))->fetch_assoc();
+    $kompart_name = $kompart_ausgewaehlt_result["ka_komponentenart"];
+    $kompart_wbd_result = (sql_komponentenart_get_wird_beschrieben_durch($mysqli, $_POST["id_selected"]))->fetch_all(MYSQLI_ASSOC);
 }
 ?>
 <h1>Komponentenarten Verwaltung</h1>
