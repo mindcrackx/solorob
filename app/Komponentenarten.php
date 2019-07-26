@@ -96,7 +96,6 @@ if (isset($_POST["btn_update"]))
         sql_komponentenart_delete_wird_beschrieben_durch($mysqli, $kompart_id);
 
         # wdb wieder anlegen
-        echo "<br><br>" . print_r($kompattr_ids_selected) . "<br><br>";
         foreach ($kompattr_ids_selected as $kompattr_id)
         {
             sql_komponentenart_komponentenattribut_verknüpfen($mysqli, $kompart_id, $kompattr_id);

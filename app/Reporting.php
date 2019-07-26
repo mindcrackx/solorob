@@ -2,7 +2,7 @@
     session_start();
     require_once("../helpers/validate_access.php");
     require_once("../mysqldb.php");
-    validate_access("Wartung");
+    validate_access("Reporting");
 ?>
 <!DOCTYPE html>
 <html lang="en">
