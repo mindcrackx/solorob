@@ -46,6 +46,28 @@ function sql_komponentenart_list(
     return $stmt->get_result();
 }
 
+function sql_komponentenart_list_one(
+    $mysqli,
+    $komponentenart_id
+)
+{
+    $sql = "select * from tbl_komponentenarten where ka_id = ?";
+    if (!($stmt = $mysqli->prepare($sql))) {
+        echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+    }
+    if (!$stmt->bind_param(
+        "i",
+        $komponentenart_id
+    )) {
+        echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+    }
+
+    if (!$stmt->execute()) {
+        echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+    }
+    return $stmt->get_result();
+}
+
 function sql_komponentenart_delete(
     $mysqli,
     $ka_id
@@ -139,6 +161,29 @@ function sql_komponentenart_delete_wird_beschrieben_durch(
 )
 {
     $sql = "delete from tbl_wird_beschrieben_durch where komponentenarten_ka_id = ?";
+    if (!($stmt = $mysqli->prepare($sql))) {
+        echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+    }
+    if (!$stmt->bind_param(
+        "i",
+        $komponentenart_id
+    )) {
+        echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+    }
+    if (!$stmt->execute()) {
+        echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+    }
+    return $stmt->get_result();
+}
+
+
+
+function sql_komponentenart_get_wird_beschrieben_durch(
+    $mysqli,
+    $komponentenart_id
+)
+{
+    $sql = "select * from tbl_wird_beschrieben_durch where komponentenarten_ka_id = ?";
     if (!($stmt = $mysqli->prepare($sql))) {
         echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
     }

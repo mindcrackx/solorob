@@ -82,10 +82,9 @@ if (isset($_POST["btn_update"]))
 
 if (isset($_POST["btn_duplizieren"]))
 {
-    $raum_ausgewaehlt_result = (sql_raeume_list_one($mysqli, $_POST["id_selected"]))->fetch_assoc();
-    $raum_nr = $raum_ausgewaehlt_result["r_nr"];
-    $raum_bezeichnung = $raum_ausgewaehlt_result["r_bezeichnung"];
-    $raum_notiz = $raum_ausgewaehlt_result["r_notiz"];
+    $kompart_ausgewaehlt_result = (sql_komponentenart_list_one($mysqli, $_POST["id_selected"]))->fetch_assoc();
+    $kompart_name = $kompart_ausgewaehlt_result["ka_komponentenart"];
+    $kompart_wbd_result = (sql_komponentenart_get_wird_beschrieben_durch($mysqli, $_POST["id_selected"]))->fetch_all(MYSQLI_ASSOC);
 }
 if (isset($_POST["btn_loeschen"]))
 {
@@ -119,10 +118,7 @@ echo(">");
 <input type="submit" name="btn_duplizieren" value="Duplizieren">
 <input type="submit" name="btn_bearbeiten" value="Bearbeiten">
 <input type="submit" name="btn_loeschen" value="Löschen">
-</form>
 
-<div class="createbot">
-<form action="" method="post">
 <?php
 if ($aendern_form)
     echo("<h1>Bearbeiten von ID: " . $_POST['id_selected'] . "</h1>");
@@ -143,9 +139,61 @@ else
 ?>
 <?php
 # show komponentenattribute for linking to komponentenart in tbl_wird_beschrieben_durch
-build_table_from_result_with_name_checkbox(sql_komponentenattribut_list_all($mysqli), "kompattr_id_");
+print_r($kompart_wbd_result);
+#build_table_from_result_with_name_checkbox(sql_komponentenattribut_list_all($mysqli), "kompattr_id_");
+    $result = sql_komponentenattribut_list_all($mysqli);
+    $prefix = "kompatr_id_";
+
+    $is_first = TRUE;
+    $found_wdb = FALSE;
+    $row_count = mysqli_num_rows($result);
+    if ($row_count > 0)
+    {
+        echo("<table border=\"1\">");
+        while ($row = mysqli_fetch_assoc($result))
+        {
+            $found_wdb = FALSE;
+            echo("<tr>");
+            if ($is_first)
+            {
+                echo("<td>x</td>");
+                foreach ($row as $key=>$value)
+                {
+                    echo("<td>$key</td>");
+                }
+                echo("</tr>");
+                echo("<tr>");
+            }
+            foreach ($row as $value)
+            {
+               $row_id = $value;
+               break;
+            }
+            if (isset($kompart_wbd_result))
+            {
+                foreach ($kompart_wbd_result as $wdb)
+                {
+                    if ($wdb["komponentenattribute_kat_id"] === $row["kat_id"])
+                    {
+                        echo("<td><input type='checkbox' name='" . $prefix . $row_id . "' checked></td>");
+                        $found_wdb = TRUE;
+                    }
+                }
+                if (! $found_wdb)
+                    echo("<td><input type='checkbox' name='" . $prefix . $row_id . "'></td>");
+            }
+            else
+                echo("<td><input type='checkbox' name='" . $prefix . $row_id . "'></td>");
+            foreach ($row as $value)
+            {
+                echo("<td>$value</td>");
+            }
+            echo("</tr>");
+            $is_first = FALSE;
+        }
+        echo("</table>");
+    }
 ?>
 </form>
-</div>
 </body>
 </html>

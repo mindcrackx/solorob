@@ -155,6 +155,44 @@ function build_table_from_result_with_name_checkbox($result, $prefix)
     }
 }
 
+
+function build_table_from_result_with_name_checkbox_preselected($result, $prefix, $ids_selected)
+{
+    $is_first = TRUE;
+    $row_count = mysqli_num_rows($result);
+    if ($row_count > 0)
+    {
+        echo("<table border=\"1\">");
+        while ($row = mysqli_fetch_assoc($result))
+        {
+            echo("<tr>");
+            if ($is_first)
+            {
+                echo("<td>x</td>");
+                foreach ($row as $key=>$value)
+                {
+                    echo("<td>$key</td>");
+                }
+                echo("</tr>");
+                echo("<tr>");
+            }
+            foreach ($row as $value)
+            {
+               $row_id = $value;
+               break;
+            }
+            echo("<td><input type='checkbox' name='" . $prefix . $row_id . "'></td>");
+            foreach ($row as $value)
+            {
+                echo("<td>$value</td>");
+            }
+            echo("</td>");
+            $is_first = FALSE;
+        }
+        echo("</table>");
+    }
+}
+
 function build_table_from_result_preselected($result, $selectedId)
 {
     $is_first = TRUE;
