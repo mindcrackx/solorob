@@ -33,13 +33,28 @@
 		<table style = "width: 100%; border-collapse: collapse;"><tr><td colspan = "3">
 			<img src = "../../static/help/09_Reporting.png" style = "width: 100%;">
 		<!--Erklärung-->
-			<tr>
+		<tr>
 				<td><strong>Indexnummer</strong></td>
 				<td><strong>Name</strong></td>
 				<td><strong>Erklärung</strong></td>
 			</tr>
 			<tr>
-				<td align = "center">1</td><td>Nickname</td><td>In dieses Feld muss der Accountname eingetragen werden</td>
+				<td align = "center">1</td><td>"<" und ">"</td><td>Mit diesen Knöpfen kann zwischen den einzelnen "Seiten" wechseln</td>
+			</tr>
+			<tr>
+			<td align = "center">2</td><td>Duplizieren</td><td>Das ausgewählte Element wird hierbei dupliziert</td>
+			</tr>
+			<tr>
+			<td align = "center">3</td><td>Bearbeiten</td><td>Hier kann das ausgewählte Element bearbeitet werden</td>
+			</tr>
+			<tr>
+			<td align = "center">4</td><td>Loeschen</td><td>Das ausgewählte Element kann durch diesen Befehl gelöscht</td>
+			</tr>
+			<tr>
+			<td align = "center">5</td><td>Eingabefelder</td><td>Dateneingabe zum Anlegen neuer Raeume</td>
+			</tr>
+			<tr>
+			<td align = "center">6</td><td>Anlegen</td><td>Anlegen eines neuen Raums mit den Daten des ausgefüllten Formulars</td>
 			</tr>
 		</table>
 		

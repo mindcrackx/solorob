@@ -33,13 +33,16 @@
 		<table style = "width: 100%; border-collapse: collapse; "><tr><td colspan = "3">
 			<img src = "../../static/help/02_Stammdaten_Lieferung.png" style = "width: 100%;">
 		<!--Erklärung-->
-			<tr>
+		<tr>
 				<td><strong>Indexnummer</strong></td>
 				<td><strong>Name</strong></td>
 				<td><strong>Erklärung</strong></td>
 			</tr>
 			<tr>
-				<td align = "center">1</td><td>Nickname</td><td>In dieses Feld muss der Accountname eingetragen werden</td>
+				<td align = "center">1</td><td>Pfeile</td><td>Seiten durchblaetern</td>
+			</tr>
+			<tr>
+				<td align = "center">2</td><td>Ausmustern</td><td>Eintrag ausmustern</td>
 			</tr>
 		</table>
 		

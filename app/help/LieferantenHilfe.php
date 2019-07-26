@@ -33,13 +33,28 @@
 		<table style = "width: 100%; border-collapse: collapse;"><tr><td colspan = "3">
 			<img src = "../../static/help/02_Stammdaten_Lieferung.png" width="100%">
 		<!--Erklärung-->
-			<tr>
+		<tr>
 				<td><strong>Indexnummer</strong></td>
 				<td><strong>Name</strong></td>
 				<td><strong>Erklärung</strong></td>
 			</tr>
 			<tr>
-				<td align = "center">1</td><td>Nickname</td><td>In dieses Feld muss der Accountname eingetragen werden</td>
+				<td align = "center">1</td><td>Pfeile</td><td>Zum Anzeigen der vorherigen/nächsten Seite</td>
+			</tr>
+			<tr>
+				<td align = "center">2</td><td>Duplizieren</td><td>Fügt die Inhalte der ausgewählte Spalte ins Formular ein</td>
+			</tr>
+			<tr>
+				<td align = "center">3</td><td>Bearbeiten</td><td>Bearbeitet die Inhalte der ausgewählten Spalte</td>
+			</tr>
+			<tr>
+				<td align = "center">4</td><td>Löschen</td><td>Löscht die ausgewählte Spalte</td>
+			</tr>
+			<tr>
+				<td align = "center">5</td><td>Formular</td><td>Formular um folgende Daten einzutragen: Name, Straße, PLZ, Ort, Telefon, Mobil, Fax, E-Mail</td>
+			</tr>
+			<tr>
+				<td align = "center">6</td><td>Anlegen</td><td>Speicher die im Formular eingegebenen Daten in der Datenbank</td>
 			</tr>
 		</table>
 		

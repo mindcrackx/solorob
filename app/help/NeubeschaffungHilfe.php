@@ -33,7 +33,7 @@
 		<table style = "width: 100%; border-collapse: collapse;"><tr><td colspan = "3">
 			<img src = "../../static/help/01_Neubeschaffung.png" style = "width: 100%;">
 		<!--Erklärung-->
-			<tr>
+		<tr>
 				<td><strong>Indexnummer</strong></td>
 				<td><strong>Name</strong></td>
 				<td><strong>Erklärung</strong></td>
